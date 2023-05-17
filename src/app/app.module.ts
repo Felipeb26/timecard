@@ -1,5 +1,5 @@
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { LOCALE_ID, NgModule } from "@angular/core";
+import { LOCALE_ID, NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { BrowserModule } from '@angular/platform-browser';
 import { MatTableModule } from "@angular/material/table"
 import { HttpClientModule } from '@angular/common/http';
@@ -11,6 +11,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { registerLocaleData } from "@angular/common";
 import localePt from "@angular/common/locales/pt";
 import { MatNativeDateModule } from "@angular/material/core";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,7 +24,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
 import { CalendarComponent } from './component/calendar/calendar.component';
 import { PointCrudComponent } from './component/point-crud/point-crud.component';
-
+import { ToastrModule } from 'ngx-toastr';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -47,12 +50,22 @@ registerLocaleData(localePt);
     MatButtonModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatFormFieldModule,
+    FormsModule, ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      preventDuplicates: true,
+      progressBar: true,
+      closeButton: true,
+    }),
+    SweetAlert2Module.forRoot(),
   ],
   providers: [
     {
       provide: LOCALE_ID,
       useValue: "pt-BR",
-    }], bootstrap: [AppComponent]
+    }], bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

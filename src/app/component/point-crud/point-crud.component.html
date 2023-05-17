@@ -1,10 +1,74 @@
 <mat-card>
-  <form>
-    <p>{{ cardpoint?.id }}</p>
-    <p>{{ cardpoint?.data }}</p>
-    <p>{{ cardpoint?.entrada }}</p>
-    <p>{{ cardpoint?.saida }}</p>
-    <p>{{ cardpoint?.horas_trabalhadas }}</p>
-    <p>{{ cardpoint?.saldo }}</p>
+  <mat-card-title>
+    Ponto
+    {{
+      cardpoint == undefined ? "Novo" : (cardpoint.data | date : "dd MMMM yyyy")
+    }}
+  </mat-card-title>
+
+  <form #point="ngForm" (ngSubmit)="markPointcard()" [formGroup]="pointgroup">
+    <mat-content>
+      <span>Data Ponto:</span>
+      <input
+        type="datetime-local"
+        formControlName="data"
+        [min]="data"
+      />
+      <label>
+        {{
+          cardpoint == undefined
+            ? "data"
+            : (cardpoint.data | date : "dd/MM/yyyy HH:mm")
+        }}
+      </label>
+
+      <span>Data Entrada:</span>
+      <input
+        type="datetime-local"
+        formControlName="entrada"
+        [min]="data"
+      />
+      <label>
+        {{
+          cardpoint == undefined
+            ? "entrada"
+            : (cardpoint.entrada | date : "dd/MM/yyyy HH:mm")
+        }}
+      </label>
+
+      <span>Data Saída:</span>
+      <input
+        type="datetime-local"
+        formControlName="saida"
+        [min]="data"
+      />
+      <label>
+        {{
+          cardpoint == undefined
+            ? "entrada"
+            : (cardpoint.saida | date : "dd/MM/yyyy HH:mm")
+        }}
+      </label>
+    </mat-content>
+
+    <div class="time_content">
+      <div class="content">
+        <span>Horas Trabalhadas:</span>
+        <label>
+          {{ cardpoint == undefined ? "" : cardpoint.horas_trabalhadas }}
+        </label>
+      </div>
+      <div class="content">
+        <span>Saldo de Horas:</span>
+        <label>
+          {{ cardpoint == undefined ? "" : cardpoint.saldo }}
+        </label>
+      </div>
+    </div>
+
+    <mat-card-actions>
+      <button mat-raised-button type="submit">btn</button>
+      <button mat-raised-button type="reset" (click)="resetFullForm()">btn</button>
+    </mat-card-actions>
   </form>
 </mat-card>

@@ -26,7 +26,11 @@
     "@fullcalendar/interaction": "^6.1.7",
     "@fullcalendar/list": "^6.1.7",
     "@fullcalendar/timegrid": "^6.1.7",
+    "@sweetalert2/ngx-sweetalert2": "^12.1.0",
+    "@sweetalert2/themes": "^5.0.15",
+    "ngx-toastr": "^17.0.2",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.7.5",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },

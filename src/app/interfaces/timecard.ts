@@ -1,5 +1,5 @@
 export interface Timecard {
-  id: number;
+  id?: string;
   data: string;
   entrada: string;
   saida: string;

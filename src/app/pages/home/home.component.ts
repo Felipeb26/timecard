@@ -24,9 +24,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.hideComponents(this.tabelaIsVisible);
     this.setDisableStyle(TABLE, CALENDAR)
-    this.requests.findAll().subscribe(res => {
-      this.timecards = res
-    });
+    this.requests.findAll().subscribe(
+      (res:Timecard[]) =>  this.timecards = res,
+      (error:any) => console.log(error)
+    );
   }
 
   showComponent(value: string, valu: string) {

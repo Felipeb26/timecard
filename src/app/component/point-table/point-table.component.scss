@@ -1,0 +1,18 @@
+table {
+  box-shadow: 0 0 0.5rem var(--deep-black-color);
+  border-radius: 5px;
+}
+
+.update,
+.delete {
+  margin: 0 0.5rem;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.update{
+  color: var(--mid-blue);
+}
+.delete{
+  color: var(--mid-red);
+}

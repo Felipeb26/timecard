@@ -20,8 +20,12 @@ export class RequestsService {
     })
   }
 
-  findAll(): Observable<any> {
-    return this.httpClient.get<any>(`${this.url}points`);
+  findAll(): Observable<Timecard[]> {
+    return this.httpClient.get<Timecard[]>(`${this.url}points`);
   }
 
+
+  deleteOne(id:string|undefined):Observable<any>{
+    return this.httpClient.delete<any>(`${this.url}points/${id}`);
+  }
 }
