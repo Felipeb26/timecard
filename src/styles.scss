@@ -1,1 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+:root {
+  --text-color: #083280;
+  --background-color: #00bfb2;
+  --header-color: #2c7b6d;
+
+  /* //transparent colors */
+  --background-color-t: #00bf5636;
+
+  /* // dark-colors */
+  --deep-black-color: rgb(21, 21, 21);
+
+  /*mid tons  */
+  --mid-green: #197d19;
+  --mid-black: rgb(30, 30, 30);
+  --mid-red: rgb(250, 20, 20);
+  --mid-blue: rgb(20, 20, 250);
+  --mid-yellow: rgb(230, 230, 50);
+  --mid-white: rgb(231, 215, 215);
+
+  /* bright colors */
+  --bright-yellow: rgb(240, 240, 0);
+  --bright-black: #222024;
+  --bright-green: rgb(0, 240, 0);
+  --bright-white: rgb(240, 240, 240);
+}
+
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+input::-webkit-calendar-picker-indicator {
+  height: 1.5rem;
+  width: 1.5rem;
+}

@@ -1,0 +1,44 @@
+.main {
+  margin: 3rem 0;
+  padding: 2rem;
+}
+
+mat-card {
+  box-shadow: 0 0 0.5rem var(--deep-black-color);
+  flex-direction: column;
+  text-align: center;
+  display: flex;
+  padding: 0.5rem;
+  margin: 0 0 2rem 0;
+
+  mat-card-title {
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+  }
+}
+
+mat-card-actions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-around;
+
+  & button {
+    box-shadow: 0 0 0.5rem var(--deep-black-color);
+    background: var(--mid-green);
+    color: var(--bright-white);
+    text-transform: uppercase;
+    transition: all 0.5s ease-in-out;
+  }
+}
+
+.components{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+  & app-point-crud{
+    flex: 1;
+    margin: 0 0 0 1.5rem;
+  }
+}

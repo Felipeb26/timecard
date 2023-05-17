@@ -1,0 +1,14 @@
+<div class="main">
+  <mat-card>
+    <mat-card-title>Change View</mat-card-title>
+    <mat-card-actions>
+      <button mat-raised-button [disabled]="tabelaIsVisible" (click)="showComponent('table','calendar')" id="table">tabela</button>
+      <button mat-raised-button [disabled]="!tabelaIsVisible" (click)="showComponent('calendar','table')" id="calendar">calendar</button>
+    </mat-card-actions>
+  </mat-card>
+  <div class="components">
+    <app-point-table [data]="timecards"></app-point-table>
+    <app-calendar [data]="timecards"></app-calendar>
+    <app-point-crud></app-point-crud>
+  </div>
+</div>
