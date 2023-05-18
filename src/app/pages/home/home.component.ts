@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { Timecard } from 'src/app/interfaces/timecard';
 import { RequestsService } from 'src/app/services/requests.service';
@@ -19,14 +20,15 @@ export class HomeComponent implements OnInit {
   timecards: Timecard[] = [];
   tabelaIsVisible: boolean = true;
 
-  constructor (private requests: RequestsService) { }
+  constructor (private requests: RequestsService,
+    private toast:ToastrService) { }
 
   ngOnInit(): void {
     this.hideComponents(this.tabelaIsVisible);
-    this.setDisableStyle(TABLE, CALENDAR)
+    this.setDisableStyle(CALENDAR, TABLE)
     this.requests.findAll().subscribe(
       (res:Timecard[]) =>  this.timecards = res,
-      (error:any) => console.log(error)
+      (error:any) => this.toast.success(error)
     );
   }
 

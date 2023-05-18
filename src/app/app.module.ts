@@ -13,6 +13,8 @@ import localePt from "@angular/common/locales/pt";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
 //
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -60,6 +62,8 @@ registerLocaleData(localePt);
       closeButton: true,
     }),
     SweetAlert2Module.forRoot(),
+    MatSelectModule,
+    MatPaginatorModule
   ],
   providers: [
     {

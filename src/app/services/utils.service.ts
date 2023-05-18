@@ -19,16 +19,36 @@ export class UtilsService {
     return millis / (1000 * 60 * 60);
   }
 
-  millisToTime(millis: any):string {
+  millisToTime(millis: any): string {
     if (millis instanceof String) {
       millis = Number(millis);
     }
-
     const hours = Math.floor(millis / (1000 * 60 * 60));
     const minutes = Math.floor((millis % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((millis % (1000 * 60)) / 1000);
-    console.log(`Horas: ${hours} min: ${minutes} sec: ${seconds}`)
-    return `Horas: ${hours} min: ${minutes} sec: ${seconds}`
+    return ` ${hours} horas ${minutes} min`
+  }
+
+  minusDate(subtrair: any, diminuir: number) {
+    subtrair = String(subtrair);
+    const hora = subtrair.split("")[0];
+    const first_minute = subtrair.split("")[1];
+    const second_minute = subtrair.split("")[2];
+
+    const hours = hora == undefined ? 0 : Math.floor(Number(hora) * 60);
+    let minutes = 0;
+
+    if (first_minute != undefined && second_minute != undefined) {
+      minutes = first_minute + second_minute;
+    } else if (first_minute == undefined && second_minute == undefined) {
+      minutes = 0
+    } else if (second_minute == undefined) {
+      minutes = 0 + first_minute;
+    }
+
+    const time = hours + Number(minutes);
+    const final_time = time - diminuir * 60;
+    return `${Math.floor(final_time / 60)}.${Math.floor(final_time % 60)}`
   }
 
 }

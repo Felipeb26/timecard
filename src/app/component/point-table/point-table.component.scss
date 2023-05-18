@@ -1,6 +1,10 @@
-table {
+mat-card {
   box-shadow: 0 0 0.5rem var(--deep-black-color);
   border-radius: 5px;
+}
+
+table {
+  width: 100%;
 }
 
 .update,
@@ -10,9 +14,10 @@ table {
   font-size: 2rem;
 }
 
-.update{
+.update {
   color: var(--mid-blue);
 }
-.delete{
+
+.delete {
   color: var(--mid-red);
 }

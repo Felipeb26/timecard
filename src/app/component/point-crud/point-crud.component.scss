@@ -42,7 +42,6 @@ mat-content {
   }
 }
 
-
 .time_content {
   margin: 1rem 0;
   display: flex;
@@ -67,7 +66,7 @@ mat-card-actions {
     margin: 0 1.5rem;
   }
 
-  button[type="reset"] {
+  .reset {
     box-shadow: 0 0 0.5rem var(--deep-black-color);
     border: 2px solid var(--bright-white);
     background: var(--mid-red);

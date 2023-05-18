@@ -2,30 +2,26 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http"
 import { Observable } from 'rxjs';
 import { Timecard } from '../interfaces/timecard';
+import { Message } from '../interfaces/message';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestsService {
 
-  url: string = "https://back-mark-point.vercel.app/";
+  url: string = "https://back-mark-point.vercel.app/points/";
 
   constructor (private httpClient: HttpClient) { }
 
-  option = {
-    headers: new Headers({
-      "Access-Control-Allow-Origin": "*",
-      "Content-type": "application-json",
-      "cors": "*"
-    })
-  }
-
   findAll(): Observable<Timecard[]> {
-    return this.httpClient.get<Timecard[]>(`${this.url}points`);
+    return this.httpClient.get<Timecard[]>(`${this.url}`);
   }
 
+  post(cardpoint: Timecard): Observable<Message> {
+    return this.httpClient.post<Message>(`${this.url}`, cardpoint);
+  }
 
-  deleteOne(id:string|undefined):Observable<any>{
-    return this.httpClient.delete<any>(`${this.url}points/${id}`);
+  deleteOne(id: string | undefined): Observable<Message> {
+    return this.httpClient.delete<Message>(`${this.url}${id}`);
   }
 }

@@ -24,7 +24,12 @@
       </label>
 
       <span>Data Entrada:</span>
-      <input type="datetime-local" formControlName="entrada" [min]="data" (ngModelChange)="getEntrada($event)"/>
+      <input
+        type="datetime-local"
+        formControlName="entrada"
+        [min]="data"
+        (ngModelChange)="getEntrada($event)"
+      />
       <label>
         {{
           cardpoint == undefined
@@ -34,7 +39,12 @@
       </label>
 
       <span>Data Saída:</span>
-      <input type="datetime-local" formControlName="saida" [min]="selectEntrada" (ngModelChange)="getSaida($event)"/>
+      <input
+        type="datetime-local"
+        formControlName="saida"
+        [min]="selectEntrada"
+        (ngModelChange)="getSaida($event)"
+      />
       <label>
         {{
           cardpoint == undefined
@@ -42,19 +52,27 @@
             : (cardpoint.saida | date : "dd/MM/yyyy HH:mm")
         }}
       </label>
+
+      <mat-form-field>
+        <mat-label>Horas Trabalhadas por dia</mat-label>
+        <mat-select (valueChange)="setHorasDia($event)">
+          <mat-option>-- None --</mat-option>
+          <mat-option *ngFor="let hora of horas_dia" [value]="hora">{{hora}} horas</mat-option>
+        </mat-select>
+      </mat-form-field>
     </mat-content>
 
     <div class="time_content">
       <div class="content">
         <span>Horas Trabalhadas:</span>
-        <label>{{horas}}</label>
+        <label>{{ horas }}</label>
         <label>
           {{ cardpoint == undefined ? "" : cardpoint.horas_trabalhadas }}
         </label>
       </div>
       <div class="content">
         <span>Saldo de Horas:</span>
-        <label>{{saldo}}</label>
+        <label>{{ saldo }}</label>
         <label>
           {{ cardpoint == undefined ? "" : cardpoint.saldo }}
         </label>
@@ -62,8 +80,13 @@
     </div>
 
     <mat-card-actions>
-      <button mat-raised-button type="submit">btn</button>
-      <button mat-raised-button type="reset" (click)="resetFullForm()">
+      <button mat-raised-button type="submit" [disabled]="btnSaveDisabled">btn</button>
+      <button
+        mat-raised-button
+        class="reset"
+        type="button"
+        (click)="resetFullForm()"
+      >
         btn
       </button>
     </mat-card-actions>

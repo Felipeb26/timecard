@@ -39,17 +39,17 @@ mat-card-actions {
   justify-content: center;
 
   & app-point-table {
-    margin: 1rem 0;
-    flex: 1;
+    margin: 1rem 0.5rem;
+    flex: 1.5;
   }
 
   & app-calendar {
-    margin: 1rem 0;
-    flex: 1;
+    margin: 1rem 0.5rem;
+    flex: 1.5;
   }
 
   & app-point-crud {
-    margin: 1rem 0;
+    margin: 1rem 0.5rem;
     flex: 1;
   }
 }
