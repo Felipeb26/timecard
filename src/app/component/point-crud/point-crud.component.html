@@ -13,6 +13,7 @@
         type="datetime-local"
         formControlName="data"
         [min]="data"
+        (ngModelChange)="showDate($event)"
       />
       <label>
         {{
@@ -23,11 +24,7 @@
       </label>
 
       <span>Data Entrada:</span>
-      <input
-        type="datetime-local"
-        formControlName="entrada"
-        [min]="data"
-      />
+      <input type="datetime-local" formControlName="entrada" [min]="data" (ngModelChange)="getEntrada($event)"/>
       <label>
         {{
           cardpoint == undefined
@@ -37,11 +34,7 @@
       </label>
 
       <span>Data Saída:</span>
-      <input
-        type="datetime-local"
-        formControlName="saida"
-        [min]="data"
-      />
+      <input type="datetime-local" formControlName="saida" [min]="selectEntrada" (ngModelChange)="getSaida($event)"/>
       <label>
         {{
           cardpoint == undefined
@@ -54,12 +47,14 @@
     <div class="time_content">
       <div class="content">
         <span>Horas Trabalhadas:</span>
+        <label>{{horas}}</label>
         <label>
           {{ cardpoint == undefined ? "" : cardpoint.horas_trabalhadas }}
         </label>
       </div>
       <div class="content">
         <span>Saldo de Horas:</span>
+        <label>{{saldo}}</label>
         <label>
           {{ cardpoint == undefined ? "" : cardpoint.saldo }}
         </label>
@@ -68,7 +63,9 @@
 
     <mat-card-actions>
       <button mat-raised-button type="submit">btn</button>
-      <button mat-raised-button type="reset" (click)="resetFullForm()">btn</button>
+      <button mat-raised-button type="reset" (click)="resetFullForm()">
+        btn
+      </button>
     </mat-card-actions>
   </form>
 </mat-card>

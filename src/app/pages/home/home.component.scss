@@ -31,14 +31,25 @@ mat-card-actions {
   }
 }
 
-.components{
+.components {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+  justify-content: center;
 
-  & app-point-crud{
+  & app-point-table {
+    margin: 1rem 0;
     flex: 1;
-    margin: 0 0 0 1.5rem;
+  }
+
+  & app-calendar {
+    margin: 1rem 0;
+    flex: 1;
+  }
+
+  & app-point-crud {
+    margin: 1rem 0;
+    flex: 1;
   }
 }

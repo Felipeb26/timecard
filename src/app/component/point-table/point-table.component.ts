@@ -25,7 +25,6 @@ export class PointTableComponent implements OnChanges {
   ngOnChanges(): void {
     this.dataSource = new MatTableDataSource(this.timecard);
     this.dataSource.sort = this.sort
-    console.log(this.timecard)
   }
 
   updatePoint(point: Timecard) {
