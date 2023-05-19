@@ -1,10 +1,18 @@
 mat-card {
   box-shadow: 0 0 0.5rem var(--deep-black-color);
   border-radius: 5px;
-}
+  overflow-x: scroll;
+  padding: 0 0 1rem 0;
 
-table {
-  width: 100%;
+  & th {
+    text-transform: capitalize;
+    letter-spacing: 0.1rem;
+    font-weight: bold;
+  }
+
+  & td {
+    // white-space: nowrap;
+  }
 }
 
 .update,
@@ -20,4 +28,11 @@ table {
 
 .delete {
   color: var(--mid-red);
+}
+
+
+@media (min-width:950px) {
+  td {
+    white-space: nowrap;
+  }
 }

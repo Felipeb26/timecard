@@ -1,2 +1,7 @@
 <app-header></app-header>
-<app-home></app-home>
+<router-outlet></router-outlet>
+
+<div class="spinner-container" *ngIf="this.load.loading$ | async">
+  <span class="loading_spinner"></span>
+</div>
+

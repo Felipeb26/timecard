@@ -64,9 +64,9 @@ export class PointTableComponent implements OnChanges {
     let hora_total = 0;
     let minuto_total = 0;
     this.timecard.map(ap => {
-      const horas = ap.horas_trabalhadas.trim();
-      const horas_index = horas.indexOf("horas");
-      const min_lasIndex = horas.lastIndexOf("s");
+      const horas = ap.horas_trabalhadas.toLowerCase().trim();
+      const horas_index = horas.indexOf("h");
+      const min_lasIndex = horas.lastIndexOf("e");
       const hora = horas.substring(0, horas_index).trim()
       const minutes = horas.substring(min_lasIndex+1, horas.indexOf("min")).trim()
       hora_total += Number(hora);

@@ -18,20 +18,26 @@ input[type="datetime-local"] {
   font-size: 1rem;
 }
 
-
 mat-content {
-  display: grid;
-  gap: 0.5rem;
-  grid-template-columns: auto auto auto;
-  height: 40vh;
-  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  & .child_content {
+    margin: 0.5rem 0;
+    width: 100%;
+    align-items: baseline;
+    display: flex;
+    justify-content: space-around;
+  }
 
   & input {
     border-bottom: 2px solid var(--deep-black-color);
   }
 
   & span {
-    letter-spacing: 0.5px;
+    text-transform: capitalize;
+    letter-spacing: 0.1rem;
     font-weight: bold;
   }
 
@@ -40,22 +46,28 @@ mat-content {
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
+
+  & mat-form-field {
+    width: 80%;
+    margin: 0 1rem;
+  }
+
 }
 
 .time_content {
-  margin: 1rem 0;
+  margin: 0.5rem 0 1.5rem 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 
   & span {
     letter-spacing: 0.1rem;
     font-weight: bold;
+    margin: 0 0.5rem 0 0;
   }
 
   & label {
     font-weight: 550;
     text-transform: uppercase;
-    letter-spacing: 0.1rem;
   }
 }
 

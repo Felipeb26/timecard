@@ -1,11 +1,45 @@
 <mat-toolbar>
-  <img src="{{logo}}" alt="logo mark">
-  <h1>
-    BatsWorks
-  </h1>
-  <ul>
-    <li><a href="">con</a></li>
-    <li><a href="">con</a></li>
-    <li><a href="">con</a></li>
+  <img src="{{ logo }}" alt="logo mark" routerLink="/home" />
+  <h1 routerLink="/home">BatsWorks</h1>
+  <ul class="nav">
+    <li>
+      <button mat-flat-button type="button">
+        <a class="material-icons">people</a>
+      </button>
+    </li>
+    <li>
+      <button mat-flat-button type="button">
+        <a class="material-icons">people</a>
+      </button>
+    </li>
+    <li>
+      <button mat-flat-button type="button" routerLink="/login">
+        <a class="material-icons">people</a>
+      </button>
+    </li>
   </ul>
+  <div class="menu">
+    <button mat-icon-button type="button" (click)="menuIsOpen = !menuIsOpen">
+      <i class="material-icons"> menu </i>
+    </button>
+  </div>
+  <div *ngIf="menuIsOpen" class="nav_menu">
+    <ul>
+      <li>
+        <button mat-flat-button type="button">
+          <a class="material-icons">people</a>
+        </button>
+      </li>
+      <li>
+        <button mat-flat-button type="button">
+          <a class="material-icons">people</a>
+        </button>
+      </li>
+      <li>
+        <button mat-flat-button type="button" routerLink="/login">
+          <a class="material-icons">people</a>
+        </button>
+      </li>
+    </ul>
+  </div>
 </mat-toolbar>

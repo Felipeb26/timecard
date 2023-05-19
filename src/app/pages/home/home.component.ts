@@ -2,6 +2,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { Timecard } from 'src/app/interfaces/timecard';
 import { RequestsService } from 'src/app/services/requests.service';
+import { SharePointService } from 'src/app/services/shared/share-point.service';
 
 const MID_GREEN = "#197d19";
 const DEEP_BLACK = "rgb(21, 21, 21)";
@@ -18,47 +19,27 @@ export class HomeComponent implements OnInit {
   tabela = document.getElementsByTagName("app-point-table") as HTMLCollectionOf<HTMLElement>;;
   calendar = document.getElementsByTagName("app-calendar") as HTMLCollectionOf<HTMLElement>;;
   timecards: Timecard[] = [];
-  tabelaIsVisible: boolean = true;
+  tabelaIsVisible: boolean = false;
 
   constructor (private requests: RequestsService,
-    private toast:ToastrService) { }
+    private toast: ToastrService,
+    private shared: SharePointService) { }
 
   ngOnInit(): void {
-    this.hideComponents(this.tabelaIsVisible);
-    this.setDisableStyle(CALENDAR, TABLE)
-    this.requests.findAll().subscribe(
-      (res:Timecard[]) =>  this.timecards = res,
-      (error:any) => this.toast.success(error)
-    );
+    this.makeRequest(true);
+    this.shared.updateValue.subscribe(it => this.makeRequest(it));
   }
 
-  showComponent(value: string, valu: string) {
+  showComponent() {
     this.tabelaIsVisible = !this.tabelaIsVisible;
-    this.hideComponents(this.tabelaIsVisible);
-    this.setDisableStyle(value, valu);
   }
 
-  hideComponents(props: boolean) {
-    for (let i = 0; i < this.calendar.length; i++) {
-      if (props) {
-        this.calendar[i].style.display = "none";
-        this.tabela[i].style.display = "";
-      } else {
-        this.calendar[i].style.display = "";
-        this.tabela[i].style.display = "none";
-      }
-    }
-  }
-
-  setDisableStyle(enable: string, disable: string) {
-    const btnSelect = document.getElementById(enable);
-    const btnToSelect = document.getElementById(disable)
-
-    btnSelect!.style.background = "#C0C0C0";
-    btnSelect!.style.boxShadow = "none";
-
-    btnToSelect!.style.boxShadow = `0 0 0.5rem ${DEEP_BLACK}`;
-    btnToSelect!.style.backgroundColor = `${MID_GREEN}`;
+  makeRequest(bool: boolean) {
+    if (!bool) return;
+    this.requests.findAll().subscribe(
+      (res: Timecard[]) => this.timecards = res,
+      (error: any) => this.toast.success(error)
+    );
   }
 
 }

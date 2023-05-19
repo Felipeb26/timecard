@@ -2,7 +2,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { LOCALE_ID, NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { BrowserModule } from '@angular/platform-browser';
 import { MatTableModule } from "@angular/material/table"
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button"
@@ -15,6 +15,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 //
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +29,8 @@ import { CalendarComponent } from './component/calendar/calendar.component';
 import { PointCrudComponent } from './component/point-crud/point-crud.component';
 import { ToastrModule } from 'ngx-toastr';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { LoginComponent } from './pages/login/login.component';
+import { InterceptorService } from './services/shared/interceptor.service';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -37,7 +40,8 @@ registerLocaleData(localePt);
     PointTableComponent,
     HomeComponent,
     CalendarComponent,
-    PointCrudComponent
+    PointCrudComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -63,13 +67,14 @@ registerLocaleData(localePt);
     }),
     SweetAlert2Module.forRoot(),
     MatSelectModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatProgressSpinnerModule
   ],
   providers: [
-    {
-      provide: LOCALE_ID,
-      useValue: "pt-BR",
-    }], bootstrap: [AppComponent],
+    { provide: LOCALE_ID, useValue: "pt-BR" },
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+  ], bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
 })
 export class AppModule { }

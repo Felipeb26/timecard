@@ -1,8 +1,8 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http"
 import { Observable } from 'rxjs';
-import { Timecard } from '../interfaces/timecard';
 import { Message } from '../interfaces/message';
+import { Timecard } from '../interfaces/timecard';
 
 @Injectable({
   providedIn: 'root'

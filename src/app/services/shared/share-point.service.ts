@@ -7,13 +7,21 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SharePointService {
 
-  private timepoint!:Timecard;
+  private timepoint!: Timecard;
   private valueSource = new BehaviorSubject<Timecard>(this.timepoint);
   public value = this.valueSource.asObservable();
 
-  constructor() { }
+  private update: boolean = false;
+  private updateSource = new BehaviorSubject<boolean>(this.update)
+  public updateValue = this.updateSource.asObservable();
 
-  changeValue(value:Timecard){
+  constructor () { }
+
+  changeValue(value: Timecard) {
     this.valueSource.next(value);
+  }
+
+  needsUpdate(value: boolean) {
+    this.updateSource.next(value);
   }
 }

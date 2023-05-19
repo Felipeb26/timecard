@@ -22,9 +22,19 @@ mat-card-actions {
   align-items: center;
   justify-content: space-around;
 
-  & button {
+  & .select {
     box-shadow: 0 0 0.5rem var(--deep-black-color);
+    border: 1px solid var(--bright-white);
     background: var(--mid-green);
+    color: var(--bright-white);
+    text-transform: uppercase;
+    transition: all 0.5s ease-in-out;
+  }
+
+  & .unselect {
+    border: 1px solid var(--deep-black-color);
+    background: "#C0C0C0";
+    box-shadow: 0 0 0.5rem var(--deep-black-color);
     color: var(--bright-white);
     text-transform: uppercase;
     transition: all 0.5s ease-in-out;
