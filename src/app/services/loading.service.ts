@@ -8,7 +8,6 @@ import { Observable, BehaviorSubject } from "rxjs";
 export class LoadingService {
 
   private loadSub = new BehaviorSubject<boolean>(false)
-
   loading$: Observable<boolean> = this.loadSub.asObservable();
 
   hide(): void {

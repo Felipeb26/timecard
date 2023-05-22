@@ -4,11 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --base-href=https://felipeb26.github.io/timecard/",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "pages": "ngh --dir dist/timecard"
   },
   "private": true,
+  "homepage": "https://felipeb26.github.io/timecard/",
   "dependencies": {
     "@angular/animations": "^15.1.0",
     "@angular/cdk": "15.2.9",

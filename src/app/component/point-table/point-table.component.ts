@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Input, OnChanges, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
@@ -22,11 +22,13 @@ export class PointTableComponent implements OnChanges {
 
   columnsToDisplay: string[] = ["data", "entrada", "saida", "horas_trabalhadas", "saldo", "actions"]
 
-  constructor (private shared: SharePointService,
+  constructor (private cdref: ChangeDetectorRef,
+    private shared: SharePointService,
     private requests: RequestsService,
     private toast: ToastrService) { }
 
   ngOnChanges(): void {
+    this.cdref.detectChanges();
     this.dataSource = new MatTableDataSource(this.timecard);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

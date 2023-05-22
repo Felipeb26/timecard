@@ -1,5 +1,5 @@
 import { ToastrService } from 'ngx-toastr';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Timecard } from 'src/app/interfaces/timecard';
 import { RequestsService } from 'src/app/services/requests.service';
 import { SharePointService } from 'src/app/services/shared/share-point.service';
@@ -21,13 +21,13 @@ export class HomeComponent implements OnInit {
   timecards: Timecard[] = [];
   tabelaIsVisible: boolean = false;
 
-  constructor (private requests: RequestsService,
-    private toast: ToastrService,
-    private shared: SharePointService) { }
+  constructor (private cdref: ChangeDetectorRef,
+    private requests: RequestsService,
+    private toast: ToastrService,) { }
 
   ngOnInit(): void {
     this.makeRequest(true);
-    this.shared.updateValue.subscribe(it => this.makeRequest(it));
+    this.cdref.detectChanges();
   }
 
   showComponent() {

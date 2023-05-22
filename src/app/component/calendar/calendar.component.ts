@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnChanges } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Input, OnChanges } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
 import eng from "@fullcalendar/core/locales/en-gb";
 import ptBr from "@fullcalendar/core/locales/pt-br";
@@ -14,7 +14,7 @@ import { SharePointService } from 'src/app/services/shared/share-point.service';
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
-export class CalendarComponent implements OnChanges, AfterViewInit {
+export class CalendarComponent implements OnChanges {
 
   @Input("data") timecards: Timecard[] = [];
   calendar: CalendarOptions = {
@@ -33,23 +33,14 @@ export class CalendarComponent implements OnChanges, AfterViewInit {
     locales: [ptBr, eng],
     navLinks: true,
     eventClick: this.handleClick.bind(this),
-    // select: this.handleDateSelect.bind(this),
-    // eventClick: this.handleEventClick.bind(this),
-    /* you can update a remote database when these fire:
-    eventAdd:
-    eventChange:
-    eventRemove:
-    */
   };
 
-  constructor (private shared: SharePointService){}
+  constructor (private cdref:ChangeDetectorRef,
+    private shared: SharePointService){}
 
   ngOnChanges(): void {
-    setTimeout(() => this.showInCalendar(), 2050);
-  }
-
-  ngAfterViewInit(): void {
-    this.showInCalendar();
+    this.cdref.detectChanges();
+    setTimeout(() => this.showInCalendar(), 150);
   }
 
   showInCalendar() {

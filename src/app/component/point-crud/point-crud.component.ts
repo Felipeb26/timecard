@@ -50,9 +50,9 @@ export class PointCrudComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit(): void {
+    this.cdref.detectChanges();
     this.shared.value.subscribe((timecard: Timecard) => {
       this.cardpoint = timecard;
-      this.cdref.detectChanges();
     });
   }
 
