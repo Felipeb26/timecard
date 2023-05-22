@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 //
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +32,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { LoginComponent } from './pages/login/login.component';
 import { InterceptorService } from './services/shared/interceptor.service';
+import { PontoComponent } from './pages/ponto/ponto.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -41,7 +43,8 @@ registerLocaleData(localePt);
     HomeComponent,
     CalendarComponent,
     PointCrudComponent,
-    LoginComponent
+    LoginComponent,
+    PontoComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +71,7 @@ registerLocaleData(localePt);
     SweetAlert2Module.forRoot(),
     MatSelectModule,
     MatPaginatorModule,
+    MatCheckboxModule,
     MatProgressSpinnerModule
   ],
   providers: [

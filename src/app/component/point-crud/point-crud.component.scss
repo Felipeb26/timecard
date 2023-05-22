@@ -94,3 +94,16 @@ mat-card-actions {
     text-transform: uppercase;
   }
 }
+
+
+@media (max-width: 650px) {
+  mat-card {
+    width: 28rem;
+  }
+}
+
+@media (max-width: 450px) {
+  mat-card {
+    width: 23rem;
+  }
+}

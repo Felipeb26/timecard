@@ -1,31 +1,10 @@
-<div class="main">
-  <mat-card>
-    <mat-card-title>Change View</mat-card-title>
-    <mat-card-actions>
-      <button
-        mat-raised-button
-        [disabled]="tabelaIsVisible"
-        (click)="showComponent()"
-        class="{{ !tabelaIsVisible ? 'select' : 'unselect' }}"
-      >
-        tabela
-      </button>
-      <button
-        mat-raised-button
-        [disabled]="!tabelaIsVisible"
-        (click)="showComponent()"
-        class="{{ tabelaIsVisible ? 'select' : 'unselect' }}"
-      >
-        calendar
-      </button>
-    </mat-card-actions>
-  </mat-card>
-  <div class="components">
-    <app-point-table
-      [data]="timecards"
-      *ngIf="tabelaIsVisible"
-    ></app-point-table>
-    <app-calendar [data]="timecards" *ngIf="!tabelaIsVisible"></app-calendar>
-    <app-point-crud></app-point-crud>
+<div class="home">
+  <div class="style"></div>
+  <div class="resume">
+    A principio de facilitar o uso de ponto, foi desenvolvido esse projeto para
+    a marcação de ponto com calculo de hora e saldo automatizados. todo o
+    desenvolvimento desse sistema se encontra de forma privada porém serão bem
+    vindas considerações e recomendações na aba de contato. desejamos auxiliar
+    em duvidas e problemas encontrados sinceramente <b><i>BatsWorks</i></b>
   </div>
 </div>

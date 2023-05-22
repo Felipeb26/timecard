@@ -16,30 +16,12 @@ const CALENDAR = "calendar";
 })
 export class HomeComponent implements OnInit {
 
-  tabela = document.getElementsByTagName("app-point-table") as HTMLCollectionOf<HTMLElement>;;
-  calendar = document.getElementsByTagName("app-calendar") as HTMLCollectionOf<HTMLElement>;;
-  timecards: Timecard[] = [];
-  tabelaIsVisible: boolean = false;
-
-  constructor (private cdref: ChangeDetectorRef,
-    private requests: RequestsService,
-    private toast: ToastrService,) { }
+  marcando_ponto: string = "assets/marca_ponto.png";
+  logo: string = "assets/batworks.png";
+  constructor () { }
 
   ngOnInit(): void {
-    this.makeRequest(true);
-    this.cdref.detectChanges();
-  }
 
-  showComponent() {
-    this.tabelaIsVisible = !this.tabelaIsVisible;
-  }
-
-  makeRequest(bool: boolean) {
-    if (!bool) return;
-    this.requests.findAll().subscribe(
-      (res: Timecard[]) => this.timecards = res,
-      (error: any) => this.toast.success(error)
-    );
   }
 
 }

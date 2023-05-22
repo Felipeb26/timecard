@@ -9,10 +9,6 @@ mat-card {
     letter-spacing: 0.1rem;
     font-weight: bold;
   }
-
-  & td {
-    // white-space: nowrap;
-  }
 }
 
 .update,
@@ -34,5 +30,22 @@ mat-card {
 @media (min-width:950px) {
   td {
     white-space: nowrap;
+  }
+}
+
+
+@media (max-width: 650px) {
+  mat-card {
+    width: 28rem;
+  }
+
+  td {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 450px) {
+  mat-card {
+    width: 23rem;
   }
 }

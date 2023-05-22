@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { LoadingService } from './services/loading.service';
 
 @Component({
@@ -6,14 +6,15 @@ import { LoadingService } from './services/loading.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements AfterViewChecked {
   title = 'timecard';
   request: boolean = false;
 
   constructor (public load: LoadingService, private cdref: ChangeDetectorRef) { }
 
-  ngOnInit(): void {
-    this.cdref.detectChanges();
+  ngAfterViewChecked(): void {
+    this.load.loading$.subscribe(request => this.request = request);
+    this.cdref.detectChanges()
   }
 
 }

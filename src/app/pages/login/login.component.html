@@ -1,6 +1,66 @@
-<mat-card>
+<div class="login">
+  <form #login="ngForm" [formGroup]="loginForm" (submit)="(login)">
+    <mat-card>
+      <img src="{{ logo }}" alt="image/login" />
 
-  
+      <mat-form-field>
+        <mat-label>Username ou Email</mat-label>
+        <input
+          type="text"
+          matInput
+          name="username"
+          formControlName="username"
+          required
+          autocomplete="username"
+        />
+        <mat-error
+          *ngIf="loginForm.get('username')?.errors?.['required'] || loginForm.get('username')?.touched"
+          >necessario informar email ou nome
+        </mat-error>
+      </mat-form-field>
 
+      <mat-form-field>
+        <mat-label>Senha</mat-label>
+        <input
+          matInput
+          [type]="showPassword ? 'number' : 'password'"
+          minlength="6"
+          maxlength="6"
+          formControlName="password"
+          required
+          #input
+          autocomplete="current-password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="showPassword = !showPassword"
+        >
+          <i class="material-icons pass">
+            {{ showPassword ? "visibility_off" : "visibility" }}
+          </i>
+        </button>
+        <mat-hint align="end">{{ input.value.length }}/6</mat-hint>
 
-</mat-card>
+        <mat-error
+          *ngIf="loginForm.get('password')?.errors?.['required'] || loginForm.get('password')?.touched || loginForm.get('password')?.hasError('min')"
+        >
+          A senha é obrigatoria e possui 6 digitos</mat-error
+        >
+      </mat-form-field>
+
+      <mat-action>
+        <div class="btn">
+          <button mat-raised-button type="submit" (click)="makeLogin(login)">
+            entrar
+          </button>
+        </div>
+        <div class="links">
+          <a href="">criar conta</a>
+          <hr />
+          <a href="">esqueci conta</a>
+        </div>
+      </mat-action>
+    </mat-card>
+  </form>
+</div>

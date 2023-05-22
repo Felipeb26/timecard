@@ -10,13 +10,13 @@
 }
 
 :root {
-  --text-color: #083280;
+  --text-color: #1046a9;
   --background-color: #00bfb2;
   --header-color: #2c7b6d;
 
   /* //transparent colors */
   --background-color-t: #00bf5636;
-  --black-t: rgba(0, 0, 0, 0.32);;
+  --black-t: rgba(0, 0, 0, 0.32);
 
   /* // dark-colors */
   --deep-black-color: rgb(21, 21, 21);
@@ -34,7 +34,7 @@
   --bright-black: #222024;
   --bright-green: rgb(0, 240, 0);
   --bright-white: rgb(240, 240, 240);
-  ---bright-text-color: rgb(17, 92, 231);
+  --bright-text-color: rgb(17, 92, 231);
 }
 
 
@@ -69,4 +69,29 @@ input::-webkit-calendar-picker-indicator {
 ::-webkit-scrollbar-thumb {
   background: var(--header-color);
   border-radius: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  transition: all 0.5s ease-in-out;
+}
+
+button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }

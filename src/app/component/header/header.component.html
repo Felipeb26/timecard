@@ -3,41 +3,60 @@
   <h1 routerLink="/home">BatsWorks</h1>
   <ul class="nav">
     <li>
-      <button mat-flat-button type="button">
-        <a class="material-icons">people</a>
+      <button mat-flat-button type="button" routerLink="/home">
+        <a class="material-icons">home</a>
+        home
       </button>
     </li>
     <li>
-      <button mat-flat-button type="button">
-        <a class="material-icons">people</a>
+      <button mat-flat-button type="button" routerLink="/ponto">
+        <a class="material-icons">library_books</a>
+        ponto
       </button>
     </li>
     <li>
       <button mat-flat-button type="button" routerLink="/login">
         <a class="material-icons">people</a>
+        login
+      </button>
+    </li>
+    <li>
+      <button mat-flat-button type="button" routerLink="/contato">
+        <a class="material-icons">contacts</a>
+        contato
       </button>
     </li>
   </ul>
+
   <div class="menu">
-    <button mat-icon-button type="button" (click)="menuIsOpen = !menuIsOpen">
+    <button mat-icon-button type="menu" (click)="changeMenuState()">
       <i class="material-icons"> menu </i>
     </button>
   </div>
   <div *ngIf="menuIsOpen" class="nav_menu">
     <ul>
       <li>
-        <button mat-flat-button type="button">
-          <a class="material-icons">people</a>
+        <button mat-flat-button type="button" routerLink="/home">
+          <a class="material-icons">home</a>
+          home
         </button>
       </li>
       <li>
-        <button mat-flat-button type="button">
-          <a class="material-icons">people</a>
+        <button mat-flat-button type="button" routerLink="/ponto">
+          <a class="material-icons">library_books</a>
+          ponto
         </button>
       </li>
       <li>
         <button mat-flat-button type="button" routerLink="/login">
           <a class="material-icons">people</a>
+          login
+        </button>
+      </li>
+      <li>
+        <button mat-flat-button type="button" routerLink="/contato">
+          <a class="material-icons">contacts</a>
+          contato
         </button>
       </li>
     </ul>

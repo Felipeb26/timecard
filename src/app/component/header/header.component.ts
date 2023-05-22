@@ -8,6 +8,14 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
 
   logo: string = "assets/batworks.png";
-  menuIsOpen: boolean = true;
+  menuIsOpen: boolean = false;
 
+  changeMenuState() {
+    this.menuIsOpen = !this.menuIsOpen
+    if (this.menuIsOpen) {
+      setTimeout(() => {
+        this.menuIsOpen = false;
+      }, 3000)
+    }
+  }
 }
