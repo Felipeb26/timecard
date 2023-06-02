@@ -1,0 +1,104 @@
+.contato {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3rem 0;
+
+  & mat-card-title {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+  }
+}
+
+mat-card {
+  box-shadow: 0 0 0.5rem var(--deep-black-color);
+  padding: 1rem 0.3rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  & img {
+    width: 5rem;
+    aspect-ratio: 1/1;
+    border-radius: 5px;
+    flex: 1;
+    margin: 0 0.5rem;
+  }
+}
+
+mat-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+
+  & .redes {
+    text-transform: capitalize;
+    flex-direction: column;
+    align-items: flex-start;
+    display: flex;
+    flex: 1;
+  }
+
+  & .contatos {
+    text-transform: capitalize;
+    flex-direction: column;
+    display: flex;
+    flex: 1;
+  }
+
+  & span {
+    margin: 0.5rem 0;
+  }
+
+  & a {
+    text-decoration: underline;
+    text-transform: lowercase;
+    color: var(--text-color);
+  }
+}
+
+mat-card-content {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  & .hard-skills {
+    margin: 1rem 0;
+    flex: 1;
+  }
+
+  & .soft-skills {
+    margin: 1rem 0 0 0;
+    flex: 1;
+  }
+}
+
+@media (max-width: 750px) {
+  mat-card-title{
+    font-size: 1rem;
+  }
+  span{
+    font-size: 0.9rem;
+  }
+.contato{
+  margin: 1rem 0;
+}
+
+  img{
+    height: 9rem;
+    width: 4rem;
+  }
+
+  mat-card {
+    max-width: 22rem;
+    flex-wrap: wrap;
+  }
+
+  mat-card-header {
+    max-width: 18rem;
+    white-space: nowrap;
+  }
+}

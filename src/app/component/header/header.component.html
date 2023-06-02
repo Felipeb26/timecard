@@ -1,6 +1,6 @@
 <mat-toolbar>
   <img src="{{ logo }}" alt="logo mark" routerLink="/home" />
-  <h1 routerLink="/home">BatsWorks</h1>
+  <h1>BatsWorks</h1>
   <ul class="nav">
     <li>
       <button mat-flat-button type="button" routerLink="/home">
@@ -29,7 +29,11 @@
   </ul>
 
   <div class="menu">
-    <button mat-icon-button type="menu" (click)="changeMenuState()">
+    <button
+      mat-icon-button
+      type="menu"
+      (click)="this.menuIsOpen = !this.menuIsOpen"
+    >
       <i class="material-icons"> menu </i>
     </button>
   </div>
@@ -62,3 +66,6 @@
     </ul>
   </div>
 </mat-toolbar>
+<section>
+  <div class="wave"></div>
+</section>

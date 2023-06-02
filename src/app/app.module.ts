@@ -17,6 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 //
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +34,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { LoginComponent } from './pages/login/login.component';
 import { InterceptorService } from './services/shared/interceptor.service';
 import { PontoComponent } from './pages/ponto/ponto.component';
+import { ContatoComponent } from './pages/contato/contato.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -44,7 +46,8 @@ registerLocaleData(localePt);
     CalendarComponent,
     PointCrudComponent,
     LoginComponent,
-    PontoComponent
+    PontoComponent,
+    ContatoComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,8 @@ registerLocaleData(localePt);
     MatSelectModule,
     MatPaginatorModule,
     MatCheckboxModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    FontAwesomeModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "pt-BR" },

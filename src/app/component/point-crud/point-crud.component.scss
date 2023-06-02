@@ -2,10 +2,11 @@ mat-card {
   box-shadow: 0 0 0.5rem var(--deep-black-color);
   padding: 1rem;
   border-radius: 5px;
+  height: 25  rem;
 
   & mat-card-title {
     text-align: center;
-    margin: 0 0 2rem;
+    margin: 0 0 0.5rem 0;
     font-weight: bold;
     letter-spacing: 0.1rem;
   }
@@ -55,14 +56,14 @@ mat-content {
 }
 
 .time_content {
-  margin: 0.5rem 0 1.5rem 0;
+  margin: 0.5rem 0;
   display: flex;
   justify-content: space-evenly;
 
   & span {
     letter-spacing: 0.1rem;
     font-weight: bold;
-    margin: 0 0.5rem 0 0;
+    // margin: 0 0.5rem 0 0;
   }
 
   & label {
@@ -75,7 +76,7 @@ mat-card-actions {
   justify-content: center;
 
   & button {
-    margin: 0 1.5rem;
+    margin: 0 1.5rem 0.5rem 1.5rem;
   }
 
   .reset {

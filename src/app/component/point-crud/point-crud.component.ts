@@ -42,6 +42,10 @@ export class PointCrudComponent implements AfterViewInit, OnInit {
     private utils: UtilsService) { }
 
   ngOnInit(): void {
+    const data = new Date();
+    data.setHours(0, 0, 0);
+    this.data = formatDate(data, FORMAT, "pt-BR");
+
     this.pointgroup = new FormGroup({
       data: new FormControl(""),
       entrada: new FormControl(""),
