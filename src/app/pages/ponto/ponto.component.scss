@@ -24,6 +24,9 @@ mat-card-actions {
   display: inline-flex;
   align-items: center;
   justify-content: space-around;
+  & button{
+    margin: 0 0.5rem;
+  }
   & .select {
     box-shadow: 0 0 0.5rem var(--deep-black-color);
     border: 1px solid var(--bright-white);

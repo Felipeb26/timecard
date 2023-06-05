@@ -3,7 +3,7 @@ button[type="button"] {
   align-items: center;
   text-transform: capitalize;
   margin: 0.2rem 0;
-  text-shadow: 0 0 0.2rem var(--bright-white);
+  text-shadow: 0 0 0.3rem var(--bright-white);
 
   & .material-icons {
     margin: 0 0.5rem;
@@ -91,6 +91,7 @@ mat-toolbar {
 }
 
 .nav_menu {
+  border: 1px solid var(--deep-black-color);
   background: var(--black-t);
   z-index: 5;
   position: absolute;

@@ -2,103 +2,183 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 3rem 0;
-
-  & mat-card-title {
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 0.1rem;
-  }
+  margin: 3.5rem 0;
 }
 
 mat-card {
   box-shadow: 0 0 0.5rem var(--deep-black-color);
   padding: 1rem 0.3rem;
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+
+  & mat-card-header {
+    display: flex;
+    width: 95%;
+  }
 
   & img {
-    width: 5rem;
-    aspect-ratio: 1/1;
+    max-width: 5rem;
     border-radius: 5px;
     flex: 1;
+    box-shadow: 0 0 0.5rem var(--deep-black-color);
     margin: 0 0.5rem;
+  }
+
+  .profile {
+    margin: 0 1rem;
+    word-wrap: break-word;
+    flex: 2;
   }
 }
 
-mat-card-header {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: center;
+mat-accordion {
+  box-shadow: 0 0 5px var(--deep-black-color);
+  border-radius: 5px;
+  padding: 0 0.5rem;
+  flex: 1;
+  margin: 1rem 0 0 0;
+  width: 95%;
 
-  & .redes {
-    text-transform: capitalize;
-    flex-direction: column;
-    align-items: flex-start;
-    display: flex;
-    flex: 1;
+  & mat-expansion-panel {
+    margin: 1rem 0;
+    box-shadow: 0 0 0.5rem var(--header-color);
+    transition: all 0.8s ease-in-out;
   }
 
-  & .contatos {
-    text-transform: capitalize;
-    flex-direction: column;
-    display: flex;
-    flex: 1;
+  & mat-expansion-panel:hover {
+    box-shadow: 0 0 0.1rem var(--header-color);
+    background: var(--background-color-t);
   }
 
-  & span {
-    margin: 0.5rem 0;
+  & mat-panel-title {
+    letter-spacing: 0.1rem;
+    white-space: nowrap;
+    font-weight: bold;
   }
 
   & a {
-    text-decoration: underline;
-    text-transform: lowercase;
+    box-shadow: 0 1px 0 var(--deep-black-color);
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.2rem 0.5rem;
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    transition: all 0.5s ease-in-out;
+    font-weight: bold;
+    letter-spacing: 0.05rem;
     color: var(--text-color);
   }
-}
 
-mat-card-content {
-  margin: 1rem 0;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-
-  & .hard-skills {
-    margin: 1rem 0;
-    flex: 1;
-  }
-
-  & .soft-skills {
-    margin: 1rem 0 0 0;
-    flex: 1;
+  & a:hover {
+    background: var(--background-color-t);
+    color: var(--bright-text-color);
   }
 }
 
-@media (max-width: 750px) {
-  mat-card-title{
-    font-size: 1rem;
+.icon {
+  margin: auto;
+  padding: 0.3rem 0.3rem 0.2rem 0.3rem;
+  border-radius: 5px;
+  border: 2px solid var(--deep-black-color);
+  box-shadow: 0 0 2px var(--deep-black-color);
+  background: var(--bright-white);
+  transition: all 0.5s ease-in-out;
+
+
+  & fa-icon {
+    font-size: 1.5rem;
+    transition: all 0.5s ease-in-out;
   }
-  span{
-    font-size: 0.9rem;
-  }
-.contato{
-  margin: 1rem 0;
 }
 
-  img{
-    height: 9rem;
-    width: 4rem;
+.github {
+  & fa-icon {
+    color: var(--deep-black-color);
   }
+}
+
+.whats {
+  & fa-icon {
+    color: var(--mid-green);
+  }
+}
+
+.mail {
+  & fa-icon {
+    color: var(--mid-red);
+  }
+}
+
+.github:hover {
+  background: var(--deep-black-color);
+
+  & fa-icon {
+    color: var(--bright-white);
+  }
+}
+
+.linkedin:hover,
+.phone:hover {
+  background: var(--text-color);
+
+  & fa-icon {
+    color: var(--bright-white);
+  }
+}
+
+.whats:hover {
+  background: var(--mid-green);
+
+  & fa-icon {
+    color: var(--bright-white);
+  }
+}
+
+.mail:hover {
+  background: var(--mid-red);
+
+  & fa-icon {
+    color: var(--bright-white);
+  }
+}
+
+@media (max-width:750px) {
 
   mat-card {
-    max-width: 22rem;
-    flex-wrap: wrap;
+    width: 22rem;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 0.5rem;
   }
 
-  mat-card-header {
-    max-width: 18rem;
-    white-space: nowrap;
+  img {
+    max-height: 7.4rem;
+  }
+
+  mat-accordion {
+    margin: 1rem 0 0.5rem 0;
+    width: 95%;
+
+    & mat-panel-title,
+    mat-panel-description {
+      text-decoration: underline;
+      color: var(--text-color);
+    }
+
+    & .content {
+      display: flex;
+      flex-direction: column;
+
+      & a {
+        text-transform: capitalize;
+        color: var(--bright-text-color);
+        font-weight: 500;
+      }
+    }
   }
 }

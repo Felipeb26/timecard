@@ -18,6 +18,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatExpansionModule } from "@angular/material/expansion";
 //
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,6 +36,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { InterceptorService } from './services/shared/interceptor.service';
 import { PontoComponent } from './pages/ponto/ponto.component';
 import { ContatoComponent } from './pages/contato/contato.component';
+import {CookieService} from "ngx-cookie-service";
+import {JwtModule} from "@auth0/angular-jwt";
+import { UserComponent } from './pages/user/user.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -47,7 +51,8 @@ registerLocaleData(localePt);
     PointCrudComponent,
     LoginComponent,
     PontoComponent,
-    ContatoComponent
+    ContatoComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -76,9 +81,12 @@ registerLocaleData(localePt);
     MatPaginatorModule,
     MatCheckboxModule,
     MatProgressSpinnerModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatExpansionModule,
+    // JwtModule.forRoot(),
   ],
   providers: [
+    CookieService,
     { provide: LOCALE_ID, useValue: "pt-BR" },
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
   ], bootstrap: [AppComponent],

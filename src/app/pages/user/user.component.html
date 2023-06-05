@@ -1,0 +1,9 @@
+<div class="user">
+    <mat-card *ngIf="persona != undefined">
+      <mat-card-title>{{persona.username}}</mat-card-title>
+      <mat-card-title>{{persona.nome}}</mat-card-title>
+      <h1>{{persona.email}}</h1>
+      <h1>{{persona.dataNascimento | date: "dd/MM/yyyy"}}</h1>
+      <h1>{{persona.senha}}</h1>
+    </mat-card>
+</div>

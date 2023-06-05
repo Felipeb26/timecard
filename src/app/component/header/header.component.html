@@ -14,8 +14,14 @@
         ponto
       </button>
     </li>
-    <li>
+    <li *ngIf="!showExit">
       <button mat-flat-button type="button" routerLink="/login">
+        <a class="material-icons">people</a>
+        login
+      </button>
+    </li>
+    <li *ngIf="showExit">
+      <button mat-flat-button type="button" routerLink="/user">
         <a class="material-icons">people</a>
         login
       </button>
@@ -24,6 +30,12 @@
       <button mat-flat-button type="button" routerLink="/contato">
         <a class="material-icons">contacts</a>
         contato
+      </button>
+    </li>
+    <li *ngIf="showExit">
+      <button mat-flat-button type="button" (click)="exit()" *ngIf="showExit">
+        <a class="material-icons">logout</a>
+        exit
       </button>
     </li>
   </ul>
@@ -51,8 +63,14 @@
           ponto
         </button>
       </li>
-      <li>
+      <li *ngIf="!showExit">
         <button mat-flat-button type="button" routerLink="/login">
+          <a class="material-icons">people</a>
+          login
+        </button>
+      </li>
+      <li *ngIf="showExit">
+        <button mat-flat-button type="button" routerLink="/user">
           <a class="material-icons">people</a>
           login
         </button>
@@ -61,6 +79,12 @@
         <button mat-flat-button type="button" routerLink="/contato">
           <a class="material-icons">contacts</a>
           contato
+        </button>
+      </li>
+      <li *ngIf="showExit">
+        <button mat-flat-button type="button" (click)="exit()">
+          <a class="material-icons">logout</a>
+          exit
         </button>
       </li>
     </ul>

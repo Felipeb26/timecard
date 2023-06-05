@@ -1,6 +1,12 @@
+import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { Login } from 'src/app/interfaces/login';
+import { BatsworksApiService } from 'src/app/services/batsworks-api.service';
+import { Token } from 'src/app/interfaces/token';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,17 +18,34 @@ export class LoginComponent implements OnInit {
   showPassword: boolean = false;
   loginForm!: FormGroup
 
+  constructor (
+    private service: LoginService,
+    private auth: BatsworksApiService,
+    private cookie: CookieService,
+    private router:Router) { }
+
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       username: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(6)]),
     });
   }
 
   makeLogin(login: FormGroupDirective) {
     const { username, password } = login.control.value;
-    if (String(password).length <= 5) return;
-    console.log(username, password)
+    if (String(password).length < 4) return;
+
+    const user: Login = { username: username, password: password }
+    this.auth.login(user).subscribe(
+      (data: Token) => {
+        this.cookie.set("auth", data.token, { expires: this.auth.authTime() });
+        this.router.navigate([""]);
+        this.service.isUserLogged(true)
+      },
+      (error: any) => {
+        console.log(error.message)
+      }
+    )
   }
 
 }

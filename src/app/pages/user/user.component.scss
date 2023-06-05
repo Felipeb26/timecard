@@ -1,0 +1,14 @@
+.user {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 4rem 0;
+}
+
+mat-card{
+  padding: 1rem;
+  max-width: 95%;
+  word-wrap: break-word;
+}
