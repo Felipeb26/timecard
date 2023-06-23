@@ -1,6 +1,8 @@
 import { BatsworksApiService } from 'src/app/services/batsworks-api.service';
 import { Component, OnInit } from '@angular/core';
 import { Persona } from 'src/app/interfaces/persona';
+import { CookieService } from 'ngx-cookie-service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-user',
@@ -12,13 +14,20 @@ export class UserComponent implements OnInit {
   persona!: Persona
 
 
-  constructor (private request: BatsworksApiService) { }
+  constructor (
+    private cookie: CookieService,
+    private token: LoginService,
+    private request: BatsworksApiService) { }
 
   ngOnInit(): void {
-    this.request.findPersona().subscribe(
+    const cookie = this.cookie.get("auth");
+    const { sub } = this.token.decodeToken(cookie);
+
+
+    this.request.findPersona(sub).subscribe(
       (data) => {
-        console.log(data.content);
-        this.persona = data.content[0];
+        console.log(data.nome);
+        this.persona = data;
       },
       (error: any) => {
         console.log(error.message);

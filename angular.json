@@ -88,7 +88,8 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "timecard:build:production"
+              "browserTarget": "timecard:build:production",
+              "proxyConfig": "src/proxy.config.json"
             },
             "development": {
               "browserTarget": "timecard:build:development",

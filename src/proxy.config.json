@@ -2,7 +2,7 @@
   {
     "context": ["/v1"],
     "target": "https://batsworks-timecard.onrender.com/batsworks/",
-    "secure": false,
+    "secure": true,
     "changeOrigin": true,
     "pathRewrite": {
       "^/": ""

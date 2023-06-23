@@ -16,11 +16,18 @@ export class InterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.load.show();
 
-    const request = req.clone({
-      setHeaders: {
-        Authorization: `Bearer ${this.cookie.get("auth")}`,
-      }
-    })
+    let request:any;
+
+    if (this.cookie.get("auth").trim() != ""){
+      request = req.clone({
+        setHeaders: {
+          Authorization: `Bearer ${this.cookie.get("auth")}`,
+        }
+      })
+    }else{
+      request = req.clone();
+    }
+
 
     return next.handle(request).pipe(
       finalize(() => {

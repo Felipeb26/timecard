@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     private service: LoginService,
     private auth: BatsworksApiService,
     private cookie: CookieService,
-    private router:Router) { }
+    private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -46,6 +46,14 @@ export class LoginComponent implements OnInit {
         console.log(error.message)
       }
     )
+  }
+
+  githubLogin() {
+    // window.location.href ="https://batsworks-timecard.onrender.com/batswork/oauth2/authorization/github"
+    // this.auth.loginGithub().subscribe(data =>{
+    console.log("github")
+    //   console.log(data)
+    // })
   }
 
 }

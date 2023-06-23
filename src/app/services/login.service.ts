@@ -29,8 +29,7 @@ export class LoginService {
 
   decodeToken(token: string) {
     const { sub, iat, exp } = this.jwt.decodeToken(token);
-
-    console.log(sub, new Date(iat).toLocaleString("pt-Br"), new Date(exp).toLocaleString("pt-BR"))
+    return { sub, iat, exp };
   }
 
 }
