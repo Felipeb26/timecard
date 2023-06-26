@@ -19,7 +19,7 @@ export class BatsworksApiService {
 
   constructor (private http: HttpClient) { }
 
-  authTime():number|Date{
+  authTime(): number | Date {
     const time = new Date();
     time.setHours(time.getHours() + 12);
     return time;
@@ -32,8 +32,12 @@ export class BatsworksApiService {
     return this.http.get<any>(`${this.url}/oauth2/authorization/github`);
   }
 
-  findPersona(email:string):Observable<Persona>{
-    return this.http.get<Persona>(`${this.persona_controller}/data/${email}`);
+  findById(id: string): Observable<Persona> {
+    return this.http.get<Persona>(`${this.url}${this.persona_controller}${id}`)
+  }
+
+  findPersona(email: string): Observable<Persona> {
+    return this.http.get<Persona>(`${this.url}${this.persona_controller}data?email=${encodeURIComponent(email)}`);
   }
 
 }

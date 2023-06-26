@@ -36,9 +36,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { InterceptorService } from './services/shared/interceptor.service';
 import { PontoComponent } from './pages/ponto/ponto.component';
 import { ContatoComponent } from './pages/contato/contato.component';
-import {CookieService} from "ngx-cookie-service";
-import {JwtModule} from "@auth0/angular-jwt";
+import { CookieService } from "ngx-cookie-service";
+import { JwtModule } from "@auth0/angular-jwt";
 import { UserComponent } from './pages/user/user.component';
+import { CacheInterceptorService } from './services/cache/cache-interceptor.service';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -89,6 +90,7 @@ registerLocaleData(localePt);
     CookieService,
     { provide: LOCALE_ID, useValue: "pt-BR" },
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptorService, multi: true }
   ], bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 

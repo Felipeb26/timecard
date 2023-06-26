@@ -1,9 +1,40 @@
 <div class="user">
-    <mat-card *ngIf="persona != undefined">
-      <mat-card-title>{{persona.username}}</mat-card-title>
-      <mat-card-title>{{persona.nome}}</mat-card-title>
-      <h1>{{persona.email}}</h1>
-      <h1>{{persona.dataNascimento | date: "dd/MM/yyyy"}}</h1>
-      <h1>{{persona.senha}}</h1>
-    </mat-card>
+  <div class="control_data">
+    <div *ngIf="!editar">
+      <mat-card *ngIf="persona != undefined" class="data">
+
+        <div class="content">
+          <h2>Nome:</h2>
+          <mat-card-title>{{persona.nome}}</mat-card-title>
+        </div>
+
+        <div class="content">
+          <h2>username:</h2>
+          <mat-card-title>{{persona.username}}</mat-card-title>
+        </div>
+
+        <div class="content">
+          <h2>idade:</h2>
+          <mat-card-title>{{persona.idade}}</mat-card-title>
+        </div>
+
+        <div class="content">
+          <h2>email:</h2>
+          <mat-card-title>{{persona.email}}</mat-card-title>
+        </div>
+
+        <div class="content">
+          <h2>
+            data nascimento:
+          </h2>
+          <mat-card-title>{{persona.dataNascimento | date: "dd/MM/yyyy"}}</mat-card-title>
+        </div>
+      </mat-card>
+    </div>
+
+    <mat-card-actions>
+      <button mat-raised-button (click)="editar=!editar" class="btn_delete">deletar</button>
+      <button mat-raised-button (click)="editar=!editar" class="btn_update">editar</button>
+    </mat-card-actions>
+  </div>
 </div>
