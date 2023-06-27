@@ -28,7 +28,6 @@ export class InterceptorService implements HttpInterceptor {
       request = req.clone();
     }
 
-
     return next.handle(request).pipe(
       finalize(() => {
         this.load.hide()

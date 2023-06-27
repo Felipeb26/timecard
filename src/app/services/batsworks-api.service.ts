@@ -29,7 +29,7 @@ export class BatsworksApiService {
     return this.http.post<Token>(`${this.url}${this.login_controller}authenticate`, login);
   }
   loginGithub(): Observable<any> {
-    return this.http.get<any>(`${this.url}/oauth2/authorization/github`);
+    return this.http.get<any>(`${this.url}${this.login_controller}github`);
   }
 
   findById(id: string): Observable<Persona> {
@@ -39,5 +39,10 @@ export class BatsworksApiService {
   findPersona(email: string): Observable<Persona> {
     return this.http.get<Persona>(`${this.url}${this.persona_controller}data?email=${encodeURIComponent(email)}`);
   }
+
+  deletePersona(id:string):Observable<any>{
+    return this.http.delete<any>(`${this.url}${this.persona_controller}${id}`)
+  }
+
 
 }

@@ -1,40 +1,93 @@
 <div class="user">
+  <span class="switch">
+    <input type="checkbox" id="switcher" (change)="editar=!editar" [disabled]="persona == undefined">
+    <label for="switcher"></label>
+  </span>
   <div class="control_data">
-    <div *ngIf="!editar">
-      <mat-card *ngIf="persona != undefined" class="data">
+    <mat-card *ngIf="persona != undefined && !editar" class="data">
 
-        <div class="content">
-          <h2>Nome:</h2>
-          <mat-card-title>{{persona.nome}}</mat-card-title>
-        </div>
+      <div class="content">
+        <h2>Nome:</h2>
+        <mat-card-title>{{persona.nome}}</mat-card-title>
+      </div>
 
-        <div class="content">
-          <h2>username:</h2>
-          <mat-card-title>{{persona.username}}</mat-card-title>
-        </div>
+      <div class="content">
+        <h2>username:</h2>
+        <mat-card-title>{{persona.username}}</mat-card-title>
+      </div>
 
-        <div class="content">
-          <h2>idade:</h2>
-          <mat-card-title>{{persona.idade}}</mat-card-title>
-        </div>
+      <div class="content">
+        <h2>idade:</h2>
+        <mat-card-title>{{persona.idade}}</mat-card-title>
+      </div>
 
-        <div class="content">
-          <h2>email:</h2>
-          <mat-card-title>{{persona.email}}</mat-card-title>
-        </div>
+      <div class="content">
+        <h2>email:</h2>
+        <mat-card-title>{{persona.email}}</mat-card-title>
+      </div>
 
-        <div class="content">
-          <h2>
-            data nascimento:
-          </h2>
-          <mat-card-title>{{persona.dataNascimento | date: "dd/MM/yyyy"}}</mat-card-title>
-        </div>
+      <div class="content">
+        <h2>
+          data nascimento:
+        </h2>
+        <mat-card-title>{{persona.dataNascimento | date: "dd/MM/yyyy"}}</mat-card-title>
+      </div>
+    </mat-card>
+
+    <form [formGroup]="userForm" *ngIf="editar && persona != undefined" #user="ngForm">
+      <mat-card>
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input matInput type="text" [placeholder]="persona.username" formControlName="username"
+            autocomplete="username"
+          >
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>nome</mat-label>
+          <input matInput type="text" [placeholder]="persona.nome" formControlName="nome">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>email</mat-label>
+          <input matInput type="text" [placeholder]="persona.email" formControlName="email"
+          autocomplete="email">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>idade</mat-label>
+          <input matInput type="text" [placeholder]="persona.idade+''" formControlName="idade">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Data nascimento</mat-label>
+          <input matInput [matDatepicker]="picker" [placeholder]="dataNascimento" formControlName="nascimento">
+          <mat-hint>dia / mes / ano</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Senha</mat-label>
+          <input matInput autocomplete="current-password" [type]="pass ? 'password' : 'text'" formControlName="senha">
+          <i class="material-icons" matIconSuffix (click)="pass=!pass">
+            {{pass? 'visibility': 'visibility_off'}}
+          </i>
+        </mat-form-field>
       </mat-card>
-    </div>
+    </form>
 
-    <mat-card-actions>
-      <button mat-raised-button (click)="editar=!editar" class="btn_delete">deletar</button>
-      <button mat-raised-button (click)="editar=!editar" class="btn_update">editar</button>
+    <mat-card class="error" *ngIf="persona == undefined">
+      <mat-card-title>Houve um problema ao buscar seus dados</mat-card-title>
+      <mat-card-title>Recomendado sair e entrar novamente</mat-card-title>
+      <img [src]="error" alt="imagem de erro">
+    </mat-card>
+
+    <mat-card-actions *ngIf="persona != undefined">
+      <button mat-button (click)="deleteUser()" class="btn_delete" [disabled]="persona==undefined" *ngIf="!editar">deletar</button>
+      <button mat-button (click)="editUser(userForm)" class="btn_update" [disabled]="persona==undefined" *ngIf="editar">
+        editar
+      </button>
     </mat-card-actions>
   </div>
 </div>

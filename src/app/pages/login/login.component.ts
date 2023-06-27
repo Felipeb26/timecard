@@ -49,9 +49,10 @@ export class LoginComponent implements OnInit {
   }
 
   githubLogin() {
-    // window.location.href ="https://batsworks-timecard.onrender.com/batswork/oauth2/authorization/github"
-    // this.auth.loginGithub().subscribe(data =>{
-    console.log("github")
+    window.location.href ="https://batsworks-timecard.onrender.com/batsworks/oauth2/authorization/github";
+    // this.auth.loginGithub().subscribe(data => {
+    //   console.log("github")
+    //   console.table(data)
     //   console.log(data)
     // })
   }
