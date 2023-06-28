@@ -39,6 +39,7 @@ import { PontoComponent } from './pages/ponto/ponto.component';
 import { UserComponent } from './pages/user/user.component';
 import { CacheInterceptorService } from './services/cache/cache-interceptor.service';
 import { InterceptorService } from './services/shared/interceptor.service';
+import { CreateForgetComponent } from './pages/create-forget/create-forget.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -52,7 +53,8 @@ registerLocaleData(localePt);
     LoginComponent,
     PontoComponent,
     ContatoComponent,
-    UserComponent
+    UserComponent,
+    CreateForgetComponent,
   ],
   imports: [
     BrowserModule,

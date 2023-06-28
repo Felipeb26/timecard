@@ -69,7 +69,7 @@
 
         <mat-form-field>
           <mat-label>Senha</mat-label>
-          <input matInput autocomplete="current-password" [type]="pass ? 'password' : 'text'" formControlName="senha">
+          <input matInput autocomplete="current-password" [type]="pass ? 'password' : 'number'" formControlName="senha">
           <i class="material-icons" matIconSuffix (click)="pass=!pass">
             {{pass? 'visibility': 'visibility_off'}}
           </i>

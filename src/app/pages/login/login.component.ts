@@ -7,6 +7,7 @@ import { BatsworksApiService } from 'src/app/services/batsworks-api.service';
 import { Token } from 'src/app/interfaces/token';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup
 
   constructor (
+    private toastr: ToastrService,
     private service: LoginService,
     private auth: BatsworksApiService,
     private cookie: CookieService,
@@ -43,13 +45,13 @@ export class LoginComponent implements OnInit {
         this.service.isUserLogged(true)
       },
       (error: any) => {
-        console.log(error.message)
+        this.toastr.error(error.status, error.message)
       }
     )
   }
 
   githubLogin() {
-    window.location.href ="https://batsworks-timecard.onrender.com/batsworks/oauth2/authorization/github";
+    // window.location.href ="https://batsworks-timecard.onrender.com/batsworks/oauth2/authorization/github";
     // this.auth.loginGithub().subscribe(data => {
     //   console.log("github")
     //   console.table(data)

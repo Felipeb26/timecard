@@ -1,9 +1,10 @@
-import { BatsworksApiService } from 'src/app/services/batsworks-api.service';
-import { Component, OnChanges, OnInit, SimpleChanges, ChangeDetectorRef } from '@angular/core';
-import { Persona } from 'src/app/interfaces/persona';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
+import { Persona } from 'src/app/interfaces/persona';
+import { BatsworksApiService } from 'src/app/services/batsworks-api.service';
 import { LoginService } from 'src/app/services/login.service';
-import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { UtilsService } from 'src/app/services/utils.service';
 @Component({
   selector: 'app-user',
@@ -22,6 +23,7 @@ export class UserComponent implements OnInit {
 
   constructor (
     private utils: UtilsService,
+    private toastr: ToastrService,
     private cookie: CookieService,
     private token: LoginService,
     private request: BatsworksApiService,
@@ -38,10 +40,9 @@ export class UserComponent implements OnInit {
         this.persona = next;
       }, (error: any) => {
         this.utils.redirectOnUNAUTHORIZED(error)
-        console.log(error.message);
-        console.log(error.status);
+        this.toastr.error(error.status, error.message);
       }, () => {
-        console.log("usuario carregado")
+        this.toastr.success("usuario carregado")
       }
     )
   }
@@ -66,14 +67,13 @@ export class UserComponent implements OnInit {
     if (this.persona.id != undefined)
       this.request.deletePersona(this.persona.id).subscribe(
         (value: any) => {
-          console.log(value)
+          this.toastr.success(value.status)
         },
         (error: any) => {
-          console.log(error.status);
-          console.log(error);
+          this.toastr.error(error.status, error.message);
         },
         () => {
-          console.log("foi deletado com sucesso")
+          this.toastr.success("foi deletado com sucesso")
         }
       )
   }
