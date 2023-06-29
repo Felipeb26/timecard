@@ -60,7 +60,27 @@ export class UserComponent implements OnInit {
 
   editUser(persona: FormGroup) {
     const { username, nome, email, idade, nascimento, senha } = persona.value;
-    console.log(persona.value)
+    if (this.persona.id != undefined) {
+      const entity = {
+        id: this.persona.id,
+        username: username,
+        nome: nome,
+        email: email,
+        idade: idade,
+        dataNascimento: nascimento,
+        senha: senha
+      }
+      console.table(entity)
+
+      this.request.editPersona(entity.id, entity).subscribe(
+        (next: Persona) => {
+          this.persona = next;
+        }, (error: any) => this.toastr.error(error.error.reason),
+        () => {
+          this.toastr.success("usuario atualizado");
+        }
+      )
+    }
   }
 
   deleteUser() {

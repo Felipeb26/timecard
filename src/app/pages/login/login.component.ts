@@ -43,9 +43,12 @@ export class LoginComponent implements OnInit {
         this.cookie.set("auth", data.token, { expires: this.auth.authTime() });
         this.router.navigate([""]);
         this.service.isUserLogged(true)
+        this.toastr.success("usuario autenticado")
       },
       (error: any) => {
-        this.toastr.error(error.status, error.message)
+        const { message, reason, timestamp, status } = error.error;
+        console.log(error.error)
+        this.toastr.error(reason, status)
       }
     )
   }

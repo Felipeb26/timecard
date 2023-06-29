@@ -44,6 +44,10 @@ export class BatsworksApiService {
     return this.http.post<Token>(`${this.url}${this.login_controller}register`, persona);
   }
 
+  editPersona(id: string, persona: Persona): Observable<Persona> {
+    return this.http.put<Persona>(`${this.url}${this.persona_controller}${id}`, persona);
+  }
+
   deletePersona(id: string): Observable<any> {
     return this.http.delete<any>(`${this.url}${this.persona_controller}${id}`)
   }
