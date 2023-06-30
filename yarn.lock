@@ -143,6 +143,13 @@
     ora "5.4.1"
     rxjs "6.6.7"
 
+"@angular-material-components/datetime-picker@9.0.0":
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/@angular-material-components/datetime-picker/-/datetime-picker-9.0.0.tgz#4fe6134bc6bdb9af65898223a3a5d2b14f80513c"
+  integrity sha512-F+yf5kxzu62q1H2ZiVbKGfKHlszQhYN/avZyejCyq7bI7V9kg93BaTJ+ACOf9NEtM05USzrLXdiBGjEAMW82aQ==
+  dependencies:
+    tslib "^2.3.0"
+
 "@angular/animations@^15.1.0":
   version "15.2.9"
   resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-15.2.9.tgz#f0773d2071a5a17c03478d5838029b03bbab9a03"
@@ -2390,6 +2397,11 @@
   version "5.0.15"
   resolved "https://registry.yarnpkg.com/@sweetalert2/themes/-/themes-5.0.15.tgz#e445f0fcf5a04e4183dce3cd5eacf5b1e0b08e1d"
   integrity sha512-uGU7CynpjRc3cllTqZEvXiZTpfQ6MN4faG+Tf0VFW81bLysCQm00iHS3NJLZx5STRfxpM5SzqeVXpAzJyTG/WA==
+
+"@syncfusion/ej2-material-theme@~22.1.36":
+  version "22.1.36"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-material-theme/-/ej2-material-theme-22.1.36.tgz#4c249bef28466d12ed30683f338d9940e99c70e1"
+  integrity sha512-8/XmzpEtgC2TZq2JPhZ5s+GFzmhFpITo1L+aKStOigdNxqYUoKu58NzH4faVBtIziuxf56Qn6vzH5j9WWdbABg==
 
 "@tootallnate/once@2":
   version "2.0.0"

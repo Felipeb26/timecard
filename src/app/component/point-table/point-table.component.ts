@@ -1,12 +1,12 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Input, OnChanges, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnChanges, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { Timecard } from 'src/app/interfaces/timecard';
+import { BatsworksApiService } from 'src/app/services/batsworks-api.service';
 import { SharePointService } from 'src/app/services/shared/share-point.service';
 import Swal from 'sweetalert2';
-import { RequestsService } from './../../services/requests.service';
-import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-point-table',
@@ -22,9 +22,10 @@ export class PointTableComponent implements OnChanges {
 
   columnsToDisplay: string[] = ["data", "entrada", "saida", "horas_trabalhadas", "saldo", "actions"]
 
-  constructor (private cdref: ChangeDetectorRef,
+  constructor (
+    private cdref: ChangeDetectorRef,
     private shared: SharePointService,
-    private requests: RequestsService,
+    private requests: BatsworksApiService,
     private toast: ToastrService) { }
 
   ngOnChanges(): void {
@@ -47,7 +48,8 @@ export class PointTableComponent implements OnChanges {
       denyButtonText: "cancelar"
     }).then(btn => {
       if (btn.isConfirmed) {
-        this.requests.deleteOne(point.id).subscribe(
+        if (point.id == undefined) return;
+        this.requests.deleteOneCard(point.id).subscribe(
           (data) => {
             this.toast.success(data.message);
           },
@@ -70,7 +72,7 @@ export class PointTableComponent implements OnChanges {
       const horas_index = horas.indexOf("h");
       const min_lasIndex = horas.lastIndexOf("e");
       const hora = horas.substring(0, horas_index).trim()
-      const minutes = horas.substring(min_lasIndex+1, horas.indexOf("min")).trim()
+      const minutes = horas.substring(min_lasIndex + 1, horas.indexOf("min")).trim()
       hora_total += Number(hora);
       minuto_total += Number(minutes);
     });

@@ -5,6 +5,7 @@ import { Login } from "../interfaces/login";
 import { Token } from '../interfaces/token';
 import { Pagination } from '../interfaces/pagination';
 import { Persona } from '../interfaces/persona';
+import { Timecard } from '../interfaces/timecard';
 
 @Injectable({
   providedIn: 'root'
@@ -52,5 +53,18 @@ export class BatsworksApiService {
     return this.http.delete<any>(`${this.url}${this.persona_controller}${id}`)
   }
 
+  // TimeCard
+
+  findAllTimeCards(): Observable<Timecard[]> {
+    return this.http.get<Timecard[]>(`${this.url}${this.card_controller}`)
+  }
+
+  postTimeCard(timacard: Timecard): Observable<any> {
+    return this.http.post<any>(`${this.url}${this.card_controller}`, timacard);
+  }
+
+  deleteOneCard(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.url}${this.card_controller}${id}`)
+  }
 
 }

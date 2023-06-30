@@ -1,8 +1,7 @@
+import { BatsworksApiService } from './../../services/batsworks-api.service';
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Timecard } from 'src/app/interfaces/timecard';
-import { RequestsService } from 'src/app/services/requests.service';
-
 
 @Component({
   selector: 'app-ponto',
@@ -15,7 +14,7 @@ export class PontoComponent {
   tabelaIsVisible: boolean = false;
 
   constructor (private cdref: ChangeDetectorRef,
-    private requests: RequestsService,
+    private requests: BatsworksApiService,
     private toast: ToastrService,) { }
 
   ngOnInit(): void {
@@ -29,7 +28,7 @@ export class PontoComponent {
 
   makeRequest(bool: boolean) {
     if (!bool) return;
-    this.requests.findAll().subscribe(
+    this.requests.findAllTimeCards().subscribe(
       (res: Timecard[]) => this.timecards = res,
       (error: any) => this.toast.success(error)
     );

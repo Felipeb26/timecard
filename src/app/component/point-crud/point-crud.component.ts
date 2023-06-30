@@ -1,10 +1,9 @@
 import { formatDate } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { dA } from '@fullcalendar/core/internal-common';
 import { ToastrService } from 'ngx-toastr';
 import { Timecard } from 'src/app/interfaces/timecard';
-import { RequestsService } from 'src/app/services/requests.service';
+import { BatsworksApiService } from 'src/app/services/batsworks-api.service';
 import { SharePointService } from 'src/app/services/shared/share-point.service';
 import { UtilsService } from 'src/app/services/utils.service';
 
@@ -35,7 +34,7 @@ export class PointCrudComponent implements AfterViewInit, OnInit {
 
 
   constructor (
-    private requests: RequestsService,
+    private requests: BatsworksApiService,
     private shared: SharePointService,
     private cdref: ChangeDetectorRef,
     private toastr: ToastrService,
@@ -148,7 +147,7 @@ export class PointCrudComponent implements AfterViewInit, OnInit {
       horas_trabalhadas: this.horas.trim(),
       saldo: Number(this.saldo)
     }
-    this.requests.post(cardpoint).subscribe(
+    this.requests.postTimeCard(cardpoint).subscribe(
       (data) => {
         this.toastr.success(`criado ponto`);
         window.location.reload();

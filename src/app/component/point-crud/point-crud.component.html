@@ -2,12 +2,17 @@
   <mat-card-title>
     Ponto
     {{
-      cardpoint == undefined ? "Novo" : (cardpoint.data | date : "dd MMMM yyyy")
+    cardpoint == undefined ? "Novo" : (cardpoint.data | date : "dd MMMM yyyy")
     }}
   </mat-card-title>
 
   <form #point="ngForm" (ngSubmit)="markPointcard()" [formGroup]="pointgroup">
-    <mat-content>
+    <mat-card>
+      <mat-form-field>
+        <input type="datetime" matInput>
+      </mat-form-field>
+
+      <!-- <mat-content>
       <div class="child_content">
         <span>Data Ponto:</span>
         <input
@@ -110,6 +115,7 @@
       >
         limpar
       </button>
-    </mat-card-actions>
+    </mat-card-actions> -->
+    </mat-card>
   </form>
 </mat-card>

@@ -70,8 +70,6 @@ export class UserComponent implements OnInit {
         dataNascimento: nascimento,
         senha: senha
       }
-      console.table(entity)
-
       this.request.editPersona(entity.id, entity).subscribe(
         (next: Persona) => {
           this.persona = next;
