@@ -1,0 +1,42 @@
+<div class="all">
+  <div class="content">
+    <input type="time" id="time">
+    <label>{{value}}</label>
+    <!-- <label>{{value | date: 'dd / MM / yyyy HH:mm'}}</label> -->
+    <button mat-icon-button type="button" (click)="openDatePicker()">
+      <i class="material-icons">
+        calendar_month
+      </i>
+    </button>
+    <button type="button" mat-icon-button (click)="getTimeInputValue()">
+      <i class="material-icons">
+        schedule
+      </i>
+    </button>
+  </div>
+  <div class="wrapper" *ngIf="showdate">
+    <div class="wrapper-body">
+
+      <div class="header">
+        <p id="current">maio 2023</p>
+        <button mat-icon-button type="button" class="material-icons" (click)="previusMonth($event)">
+          chevron_left
+        </button>
+        <button mat-icon-button type="button" class="material-icons" (click)="nextMonth()">
+          navigate_next
+        </button>
+      </div>
+
+      <div class="calendar">
+        <ul class="weeks">
+          <li *ngFor="let week of weeks">{{week}}</li>
+        </ul>
+        <ul id="days">
+          <li *ngFor="let day of days">
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>

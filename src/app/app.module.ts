@@ -40,6 +40,7 @@ import { UserComponent } from './pages/user/user.component';
 import { CacheInterceptorService } from './services/cache/cache-interceptor.service';
 import { InterceptorService } from './services/shared/interceptor.service';
 import { CreateForgetComponent } from './pages/create-forget/create-forget.component';
+import DatetimeControlComponent from './component/datetime-control/datetime-control.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -55,6 +56,7 @@ registerLocaleData(localePt);
     ContatoComponent,
     UserComponent,
     CreateForgetComponent,
+    DatetimeControlComponent,
   ],
   imports: [
     BrowserModule,

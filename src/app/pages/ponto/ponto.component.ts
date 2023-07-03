@@ -28,10 +28,10 @@ export class PontoComponent {
 
   makeRequest(bool: boolean) {
     if (!bool) return;
-    this.requests.findAllTimeCards().subscribe(
-      (res: Timecard[]) => this.timecards = res,
-      (error: any) => this.toast.success(error)
-    );
+    // this.requests.findAllTimeCards().subscribe(
+    //   (res: Timecard[]) => this.timecards = res,
+    //   (error: any) => this.toast.success(error)
+    // );
   }
 
 }

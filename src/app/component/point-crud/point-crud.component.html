@@ -7,10 +7,9 @@
   </mat-card-title>
 
   <form #point="ngForm" (ngSubmit)="markPointcard()" [formGroup]="pointgroup">
-    <mat-card>
-      <mat-form-field>
-        <input type="datetime" matInput>
-      </mat-form-field>
+
+      <datetime-control>
+      </datetime-control>
 
       <!-- <mat-content>
       <div class="child_content">
@@ -116,6 +115,5 @@
         limpar
       </button>
     </mat-card-actions> -->
-    </mat-card>
   </form>
 </mat-card>

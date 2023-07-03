@@ -2,29 +2,18 @@
   <mat-card>
     <mat-card-title>Change View</mat-card-title>
     <mat-card-actions>
-      <button
-        mat-raised-button
-        [disabled]="tabelaIsVisible"
-        (click)="showComponent()"
-        class="{{ !tabelaIsVisible ? 'select' : 'unselect' }}"
-      >
+      <button mat-raised-button [disabled]="tabelaIsVisible" (click)="showComponent()"
+        class="{{ !tabelaIsVisible ? 'select' : 'unselect' }}">
         tabela
       </button>
-      <button
-        mat-raised-button
-        [disabled]="!tabelaIsVisible"
-        (click)="showComponent()"
-        class="{{ tabelaIsVisible ? 'select' : 'unselect' }}"
-      >
+      <button mat-raised-button [disabled]="!tabelaIsVisible" (click)="showComponent()"
+        class="{{ tabelaIsVisible ? 'select' : 'unselect' }}">
         calendar
       </button>
     </mat-card-actions>
   </mat-card>
   <div class="components">
-    <app-point-table
-      [data]="timecards"
-      *ngIf="tabelaIsVisible"
-    ></app-point-table>
+    <app-point-table [data]="timecards" *ngIf="tabelaIsVisible"></app-point-table>
     <app-calendar [data]="timecards" *ngIf="tabelaIsVisible"></app-calendar>
     <app-point-crud></app-point-crud>
   </div>
