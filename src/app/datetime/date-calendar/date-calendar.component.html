@@ -1,0 +1,26 @@
+<div class="wrapper">
+  <div class="wrapper-body">
+
+    <div class="header">
+      <p id="current">maio 2023</p>
+      <button mat-icon-button type="button" class="material-icons" (click)="previusMonth()">
+        chevron_left
+      </button>
+      <button type="button" mat-raised-button (click)="todayDate()">hoje</button>
+      <button mat-icon-button type="button" class="material-icons" (click)="nextMonth()">
+        navigate_next
+      </button>
+    </div>
+
+    <div class="calendar">
+      <ul class="weeks">
+        <li *ngFor="let week of weeks">{{week}}</li>
+      </ul>
+      <ul id="days">
+        <li *ngFor="let day of days">
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>

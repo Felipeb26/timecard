@@ -6,12 +6,17 @@
     }}
   </mat-card-title>
 
-  <form #point="ngForm" (ngSubmit)="markPointcard()" [formGroup]="pointgroup">
+  <form #point="ngForm" [formGroup]="pointgroup">
 
-      <datetime-control>
-      </datetime-control>
+    <datetime-control [placeholder]="placeholder_1" (value)="getData($event)" ></datetime-control>
 
-      <!-- <mat-content>
+    <datetime-control>
+    </datetime-control>
+
+    <datetime-control>
+    </datetime-control>
+
+    <!-- <mat-content>
       <div class="child_content">
         <span>Data Ponto:</span>
         <input
@@ -100,20 +105,15 @@
           {{ cardpoint == undefined ? "" : cardpoint.saldo }}
         </label>
       </div>
-    </div>
+    </div>-->
 
     <mat-card-actions>
-      <button mat-raised-button type="submit" [disabled]="btnSaveDisabled">
+      <button mat-raised-button type="submit" [disabled]="!btnSaveDisabled" (click)="markPointcard(point)">
         {{ cardpoint == undefined ? "salvar" : "atualizar" }}
       </button>
-      <button
-        mat-raised-button
-        class="reset"
-        type="button"
-        (click)="resetFullForm()"
-      >
+      <button mat-raised-button class="reset" type="button" (click)="resetFullForm()">
         limpar
       </button>
-    </mat-card-actions> -->
+    </mat-card-actions>
   </form>
 </mat-card>

@@ -18,7 +18,7 @@ export class InterceptorService implements HttpInterceptor {
 
     let request:any;
 
-    if (this.cookie.get("auth").trim() != ""){
+    if (this.cookie.get("auth").trim() != "" && !req.url.includes("github")){
       request = req.clone({
         setHeaders: {
           Authorization: `Bearer ${this.cookie.get("auth")}`,

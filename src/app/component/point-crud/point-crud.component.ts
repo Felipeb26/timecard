@@ -14,6 +14,8 @@ const FORMAT = "yyyy-MM-ddThh:mm";
   styleUrls: ['./point-crud.component.scss']
 })
 export class PointCrudComponent implements AfterViewInit, OnInit {
+
+  placeholder_1: string = "Data cadastrada";
   // itens default
   data: any = formatDate(new Date(), FORMAT, "pt-BR");
   horas_dia: number[] = [4, 6, 8, 10, 12]
@@ -138,23 +140,35 @@ export class PointCrudComponent implements AfterViewInit, OnInit {
     this.horas = "";
   }
 
-  markPointcard() {
-    const { data, entrada, saida } = this.pointgroup.controls;
-    const cardpoint: Timecard = {
-      data: data.value,
-      entrada: entrada.value,
-      saida: saida.value,
-      horas_trabalhadas: this.horas.trim(),
-      saldo: Number(this.saldo)
-    }
-    this.requests.postTimeCard(cardpoint).subscribe(
-      (data) => {
-        this.toastr.success(`criado ponto`);
-        window.location.reload();
-      },
-      (error) => this.toastr.error(`Houve um erro ${error.message}`)
-    );
-    this.shared.needsUpdate(true);
+  getData($event: string): void {
+    const [data, horario] = $event.split(" ")
+    console.log(horario)
+    console.log(data)
+
+    const [dia, mes, ano] = data.split("/")
+
+    console.log(dia, mes, ano)
+  }
+
+
+  markPointcard(form: any) {
+    console.log(form)
+    // const { data, entrada, saida } = this.pointgroup.controls;
+    // const cardpoint: Timecard = {
+    //   data: data.value,
+    //   entrada: entrada.value,
+    //   saida: saida.value,
+    //   horas_trabalhadas: this.horas.trim(),
+    //   saldo: Number(this.saldo)
+    // }
+    // this.requests.postTimeCard(cardpoint).subscribe(
+    //   (data) => {
+    //     this.toastr.success(`criado ponto`);
+    //     window.location.reload();
+    //   },
+    //   (error) => this.toastr.error(`Houve um erro ${error.message}`)
+    // );
+    // this.shared.needsUpdate(true);
   }
 
 }

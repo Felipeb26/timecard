@@ -19,6 +19,7 @@ import { MatTableModule } from "@angular/material/table";
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatDialogModule } from "@angular/material/dialog";
 //
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -40,7 +41,9 @@ import { UserComponent } from './pages/user/user.component';
 import { CacheInterceptorService } from './services/cache/cache-interceptor.service';
 import { InterceptorService } from './services/shared/interceptor.service';
 import { CreateForgetComponent } from './pages/create-forget/create-forget.component';
-import DatetimeControlComponent from './component/datetime-control/datetime-control.component';
+import DatetimeControlComponent from './datetime/datetime-control/datetime-control.component';
+import { TimeComponent } from './datetime/time/time.component';
+import { DateCalendarComponent } from './datetime/date-calendar/date-calendar.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -57,6 +60,8 @@ registerLocaleData(localePt);
     UserComponent,
     CreateForgetComponent,
     DatetimeControlComponent,
+    TimeComponent,
+    DateCalendarComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,6 +92,7 @@ registerLocaleData(localePt);
     MatProgressSpinnerModule,
     FontAwesomeModule,
     MatExpansionModule,
+    MatDialogModule,
     // JwtModule.forRoot(),
   ],
   providers: [

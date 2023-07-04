@@ -110,6 +110,15 @@ mat-card {
 // }
 
 
-form{
-  padding: 1.5rem;
+form {
+  padding: 1.5rem 1.5rem 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+datetime-control {
+  width: 100%;
+  margin: 0.5rem 0;
 }

@@ -41,42 +41,38 @@
   </ul>
 
   <div class="menu">
-    <button
-      mat-icon-button
-      type="menu"
-      (click)="this.menuIsOpen = !this.menuIsOpen"
-    >
+    <button mat-icon-button type="menu" (click)="this.menuIsOpen = !this.menuIsOpen">
       <i class="material-icons"> menu </i>
     </button>
   </div>
   <div *ngIf="menuIsOpen" class="nav_menu">
     <ul>
       <li>
-        <button mat-flat-button type="button" routerLink="/home">
+        <button mat-flat-button type="button" routerLink="/home" (click)="this.menuIsOpen = !this.menuIsOpen">
           <a class="material-icons">home</a>
           home
         </button>
       </li>
       <li>
-        <button mat-flat-button type="button" routerLink="/ponto">
+        <button mat-flat-button type="button" routerLink="/ponto" (click)="this.menuIsOpen = !this.menuIsOpen">
           <a class="material-icons">library_books</a>
           ponto
         </button>
       </li>
       <li *ngIf="!showExit">
-        <button mat-flat-button type="button" routerLink="/login">
+        <button mat-flat-button type="button" routerLink="/login" (click)="this.menuIsOpen = !this.menuIsOpen">
           <a class="material-icons">people</a>
           login
         </button>
       </li>
       <li *ngIf="showExit">
-        <button mat-flat-button type="button" routerLink="/user">
+        <button mat-flat-button type="button" routerLink="/user" (click)="this.menuIsOpen = !this.menuIsOpen">
           <a class="material-icons">people</a>
           login
         </button>
       </li>
       <li>
-        <button mat-flat-button type="button" routerLink="/contato">
+        <button mat-flat-button type="button" routerLink="/contato" (click)="this.menuIsOpen = !this.menuIsOpen">
           <a class="material-icons">contacts</a>
           contato
         </button>
