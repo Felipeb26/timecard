@@ -780,6 +780,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 @sweetalert2/ngx-sweetalert2
 
+@syncfusion/ej2-material-theme
+SEE LICENSE IN license
+
 ngx-cookie-service
 MIT
 
