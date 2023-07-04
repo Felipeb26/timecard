@@ -19,6 +19,37 @@
     letter-spacing: 0.1rem;
   }
 
+  & p {
+    flex: 1;
+  }
+
+  & .header-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+}
+
+
+.header-btn {
+  & button {
+    border: 1px solid var(--bright-white);
+    margin: 0 0.2rem;
+  }
+
+  & .today {
+    box-shadow: 0 0 0.5rem var(--deep-black-color);
+    background: var(--mid-green);
+    color: var(--bright-white);
+    text-transform: uppercase;
+    transition: all 0.5s ease-in-out;
+    border-radius: 50%;
+    height: 3rem;
+    aspect-ratio: 1/1;
+  }
+
 }
 
 .calendar {

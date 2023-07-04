@@ -108,6 +108,7 @@ export class DateCalendarComponent implements AfterViewInit {
   }
 
   todayDate() {
+    this.resetLiClass();
     const date = new Date();
     this.currentMonth = date.getMonth();
     this.currentYear = date.getFullYear();

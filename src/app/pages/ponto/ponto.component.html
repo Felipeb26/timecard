@@ -14,7 +14,7 @@
   </mat-card>
   <div class="components">
     <app-point-table [data]="timecards" *ngIf="tabelaIsVisible"></app-point-table>
-    <app-calendar [data]="timecards" *ngIf="tabelaIsVisible"></app-calendar>
+    <app-calendar [data]="timecards" *ngIf="!tabelaIsVisible"></app-calendar>
     <app-point-crud></app-point-crud>
   </div>
 </div>
