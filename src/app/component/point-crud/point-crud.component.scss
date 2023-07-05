@@ -1,4 +1,5 @@
 mat-card {
+  transition: all 0.5s ease-in-out;
   box-shadow: 0 0 0.5rem var(--deep-black-color);
   padding: 1rem;
   border-radius: 5px;
@@ -12,106 +13,45 @@ mat-card {
   }
 }
 
-// input[type="datetime-local"] {
-//   border: none;
-//   font-weight: bold;
-//   position: relative;
-//   font-size: 1rem;
-// }
+mat-card-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
 
-// mat-content {
-//   display: flex;
-//   flex-wrap: wrap;
-//   flex-direction: column;
+  & mat-form-field {
+    margin: 0 1rem;
+    flex: 1;
+  }
+}
 
-//   & .child_content {
-//     margin: 0.5rem 0;
-//     width: 100%;
-//     align-items: baseline;
-//     display: flex;
-//     justify-content: space-around;
-//   }
+mat-card-actions {
+  justify-content: center;
 
-//   & input {
-//     border-bottom: 2px solid var(--deep-black-color);
-//   }
+  & button {
+    margin: 0 1.5rem 0.5rem 1.5rem;
+  }
 
-//   & span {
-//     text-transform: capitalize;
-//     letter-spacing: 0.1rem;
-//     font-weight: bold;
-//   }
+  .reset {
+    box-shadow: 0 0 0.5rem var(--deep-black-color);
+    border: 2px solid var(--bright-white);
+    background: var(--mid-red);
+    color: var(--bright-white);
+    text-transform: uppercase;
+  }
 
-//   & label {
-//     font-weight: 500;
-//     text-transform: uppercase;
-//     letter-spacing: 0.5px;
-//   }
-
-//   & mat-form-field {
-//     width: 80%;
-//     margin: 0 1rem;
-//   }
-
-// }
-
-// .time_content {
-//   margin: 0.5rem 0;
-//   display: flex;
-//   justify-content: space-evenly;
-
-//   & span {
-//     letter-spacing: 0.1rem;
-//     font-weight: bold;
-//     // margin: 0 0.5rem 0 0;
-//   }
-
-//   & label {
-//     font-weight: 550;
-//     text-transform: uppercase;
-//   }
-// }
-
-// mat-card-actions {
-//   justify-content: center;
-
-//   & button {
-//     margin: 0 1.5rem 0.5rem 1.5rem;
-//   }
-
-//   .reset {
-//     box-shadow: 0 0 0.5rem var(--deep-black-color);
-//     border: 2px solid var(--bright-white);
-//     background: var(--mid-red);
-//     color: var(--bright-white);
-//     text-transform: uppercase;
-//   }
-
-//   button[type="submit"] {
-//     box-shadow: 0 0 0.5rem var(--deep-black-color);
-//     border: 2px solid var(--bright-white);
-//     background: var(--mid-green);
-//     color: var(--bright-white);
-//     text-transform: uppercase;
-//   }
-// }
-
-
-// @media (max-width: 650px) {
-//   mat-card {
-//     width: 28rem;
-//   }
-// }
-
-// @media (max-width: 450px) {
-//   mat-card {
-//     width: 23rem;
-//   }
-// }
-
+  button[type="submit"] {
+    box-shadow: 0 0 0.5rem var(--deep-black-color);
+    border: 2px solid var(--bright-white);
+    background: var(--mid-green);
+    color: var(--bright-white);
+    text-transform: uppercase;
+  }
+}
 
 form {
-  padding: 1.5rem 1.5rem 1.5rem 0;
+  padding: 0.5rem 1.5rem 1.5rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -119,6 +59,30 @@ form {
 }
 
 datetime-control {
+  transition: all 0.5s ease-in-out;
   width: 100%;
   margin: 0.5rem 0;
+}
+
+.error {
+  box-shadow: 0 0 0.5rem var(--deep-black-color);
+  margin: 0.1rem 0;
+  padding: 1rem;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+  color: var(--mid-red);
+}
+
+@media (max-width: 650px) {
+  mat-card {
+    width: 35rem;
+  }
+}
+
+@media (max-width: 580px) {
+  mat-card {
+    width: 28rem;
+  }
 }

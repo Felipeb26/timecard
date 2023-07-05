@@ -1,8 +1,10 @@
 export interface Timecard {
   id?: string;
-  data: string;
-  entrada: string;
-  saida: string;
-  horas_trabalhadas: string;
-  saldo: number;
+  dataCadastro: string;
+  dataEntrada: string;
+  dataSaida: string;
+  jornadaTrabalho: string;
+  saldo?: string;
+  horasTrabalhadas?: string;
+  tempoAlmoco: string;
 }

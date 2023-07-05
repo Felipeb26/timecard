@@ -61,21 +61,23 @@ export class PointTableComponent implements OnChanges {
   }
 
   getTotalSaldo() {
-    return this.timecard.map(ap => ap.saldo).reduce((index, value) => index + value, 0)
+    // return this.timecard.map(ap => {
+    //   if (ap.saldo != undefined && ap.saldo != null) ap.saldo;
+    // }).reduce((index, value) => index + value, 0)
   }
 
   getTotalHoras() {
-    let hora_total = 0;
-    let minuto_total = 0;
-    this.timecard.map(ap => {
-      const horas = ap.horas_trabalhadas.toLowerCase().trim();
-      const horas_index = horas.indexOf("h");
-      const min_lasIndex = horas.lastIndexOf("e");
-      const hora = horas.substring(0, horas_index).trim()
-      const minutes = horas.substring(min_lasIndex + 1, horas.indexOf("min")).trim()
-      hora_total += Number(hora);
-      minuto_total += Number(minutes);
-    });
-    return `${hora_total} horas ${minuto_total} min`
+    // let hora_total = 0;
+    // let minuto_total = 0;
+    // this.timecard.map(ap => {
+    //   const horas = ap.horasTrabalhadas.toLowerCase().trim();
+    //   const horas_index = horas.indexOf("h");
+    //   const min_lasIndex = horas.lastIndexOf("e");
+    //   const hora = horas.substring(0, horas_index).trim()
+    //   const minutes = horas.substring(min_lasIndex + 1, horas.indexOf("min")).trim()
+    //   hora_total += Number(hora);
+    //   minuto_total += Number(minutes);
+    // });
+    // return `${hora_total} horas ${minuto_total} min`
   }
 }

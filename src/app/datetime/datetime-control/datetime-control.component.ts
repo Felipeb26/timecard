@@ -26,15 +26,24 @@ export default class DatetimeControlComponent implements OnInit {
     popup.afterClosed().subscribe((data: Date) => {
       if (data === undefined) return;
       const dataToSet = data.toLocaleDateString("pt-BR");
+
       if (this.value.startsWith("d")) this.value = "";
-      if (this.value.includes(":")) {
-        this.value = `${dataToSet} ${this.value}`
+      if (this.value.includes("/")) {
+        const containTime = this.value.indexOf(":");
+
+        if (containTime > -1) {
+          const part = this.value.substring(containTime - 2);
+          this.value = `${dataToSet} ${part}`;
+          this.data.emit(this.value);
+          return;
+        }
+
+        this.value = `${dataToSet}`;
         this.data.emit(this.value);
         return;
       }
-      if (this.value.includes("/")) {
-        const part = this.value.substring(this.value.indexOf(":") - 2);
-        this.value = dataToSet + part;
+      if (this.value.includes(":")) {
+        this.value = `${dataToSet} ${this.value}`
         this.data.emit(this.value);
         return;
       }
@@ -50,11 +59,11 @@ export default class DatetimeControlComponent implements OnInit {
       if (data === undefined) return;
 
       const timeToSet = ` ${data.hours > 10 ? data.hours : '0' + data.hours}:${data.minutes > 10 ? data.minutes : '0' + data.minutes}`;
-      if (this.value.startsWith("d")) {
+      if (this.value.toLowerCase().startsWith("d")) {
         this.value = "";
       }
       if (this.value.includes(":")) {
-        const part = this.value.substring(0, this.value.indexOf(":") - 2);
+        const part = this.value.substring(0, this.value.indexOf(":") - 3);
         this.value = part + timeToSet;
         this.data.emit(this.value);
         return;

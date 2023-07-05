@@ -2,110 +2,41 @@
   <mat-card-title>
     Ponto
     {{
-    cardpoint == undefined ? "Novo" : (cardpoint.data | date : "dd MMMM yyyy")
+    cardpoint == undefined ? "Novo" : (cardpoint.dataCadastro | date : "dd MMMM yyyy")
     }}
   </mat-card-title>
-
+      <div class="error" *ngIf="error">
+        <p>todos os campos devem ser preenchidos para salvar</p>
+      </div>
   <form #point="ngForm" [formGroup]="pointgroup">
 
-    <datetime-control [placeholder]="placeholder_1" (value)="getData($event)" ></datetime-control>
+    <datetime-control [placeholder]="placeholder_1" (value)="getDataCadastro($event)"></datetime-control>
+    <datetime-control [placeholder]="placeholder_2" (value)="getDataEntrada($event)"></datetime-control>
+    <datetime-control [placeholder]="placeholder_3" (value)="getDataSaida($event)"></datetime-control>
 
-    <datetime-control>
-    </datetime-control>
+    <mat-card-content>
+      <mat-form-field>
+        <mat-label>horas por dia</mat-label>
+        <mat-select formControlName="jornadaTrabalho" required>
+          <mat-option> --NONE-- </mat-option>
+          <mat-option *ngFor="let hora of horas_dia" [value]="hora">
+            {{hora}} horas
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <datetime-control>
-    </datetime-control>
+      <mat-form-field>
+        <mat-label> tempo de almoco </mat-label>
+        <mat-select formControlName="horasAlmoco" required>
+          <mat-option> --NONE-- </mat-option>
+            <mat-option *ngFor="let almoco of horas_almoco" [value]="almoco">
+              {{almoco < 10 ? almoco + ' Hora(s)' : almoco +' Minutos'}}
+            </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
 
-    <!-- <mat-content>
-      <div class="child_content">
-        <span>Data Ponto:</span>
-        <input
-          type="datetime-local"
-          formControlName="data"
-          [min]="data"
-          (ngModelChange)="showDate($event)"
-        />
-        <label>
-          {{
-            cardpoint == undefined
-              ? ""
-              : (cardpoint.data | date : "dd/MM/yyyy HH:mm")
-          }}
-        </label>
-      </div>
-      <div class="child_content">
-        <span>Data Entrada:</span>
-        <input
-          type="datetime-local"
-          formControlName="entrada"
-          [min]="data"
-          (ngModelChange)="getEntrada($event)"
-        />
-        <label>
-          {{
-            cardpoint == undefined
-              ? ""
-              : (cardpoint.entrada | date : "dd/MM/yyyy HH:mm")
-          }}
-        </label>
-      </div>
 
-      <div class="child_content">
-        <span>Data Saída:</span>
-        <input
-          type="datetime-local"
-          formControlName="saida"
-          [min]="selectEntrada"
-          (ngModelChange)="getSaida($event)"
-        />
-        <label>
-          {{
-            cardpoint == undefined
-              ? ""
-              : (cardpoint.saida | date : "dd/MM/yyyy HH:mm")
-          }}
-        </label>
-      </div>
-
-      <div class="child_content">
-        <mat-form-field>
-          <mat-label>Horas Trabalhadas por dia</mat-label>
-          <mat-select (valueChange)="setHorasDia($event)">
-            <mat-option>-- None --</mat-option>
-            <mat-option *ngFor="let hora of horas_dia" [value]="hora"
-              >{{ hora }} horas</mat-option
-            >
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Tempo de almoço</mat-label>
-          <mat-select (valueChange)="setTempoAlmoco($event)">
-            <mat-option>-- None --</mat-option>
-            <mat-option *ngFor="let moco of almoco" [value]="moco">{{
-              moco > 10 ? moco + " minutos" : moco + " hora(s)"
-            }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </mat-content>
-
-    <div class="time_content">
-      <div>
-        <span>Horas Trabalhadas:</span>
-        <label>{{ horas }}</label>
-        <label>
-          {{ cardpoint == undefined ? "" : cardpoint.horas_trabalhadas }}
-        </label>
-      </div>
-      <div>
-        <span>Saldo de Horas:</span>
-        <label>{{ saldo }}</label>
-        <label>
-          {{ cardpoint == undefined ? "" : cardpoint.saldo }}
-        </label>
-      </div>
-    </div>-->
 
     <mat-card-actions>
       <button mat-raised-button type="submit" [disabled]="!btnSaveDisabled" (click)="markPointcard(point)">

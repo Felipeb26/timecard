@@ -1,10 +1,9 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Input, OnChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnChanges } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
 import eng from "@fullcalendar/core/locales/en-gb";
 import ptBr from "@fullcalendar/core/locales/pt-br";
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction'; // a plugin!
-import listPlugin from "@fullcalendar/list";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { Timecard } from 'src/app/interfaces/timecard';
 import { SharePointService } from 'src/app/services/shared/share-point.service';
@@ -18,11 +17,11 @@ export class CalendarComponent implements OnChanges {
 
   @Input("data") timecards: Timecard[] = [];
   calendar: CalendarOptions = {
-    plugins: [dayGridPlugin, interactionPlugin, timeGridPlugin, listPlugin],
+    plugins: [dayGridPlugin, interactionPlugin, timeGridPlugin],
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+      right: 'dayGridMonth,timeGridWeek,timeGridDay'
     },
     initialView: 'dayGridMonth',
     weekends: true,
@@ -47,8 +46,8 @@ export class CalendarComponent implements OnChanges {
     const points: any[] = [];
     this.timecards.forEach(time => {
       const point = {
-        title: this.setTitleName(time.data),
-        date: time.data,
+        title: this.setTitleName(time.dataCadastro),
+        date: time.dataCadastro,
         color: "#197d19",
         background: "#197d84",
         data: time
