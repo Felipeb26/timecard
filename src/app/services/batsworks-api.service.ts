@@ -59,6 +59,10 @@ export class BatsworksApiService {
     return this.http.get<Timecard[]>(`${this.url}${this.card_controller}`)
   }
 
+  findCardByUserId(id:string):Observable<Timecard[]>{
+    return this.http.get<Timecard[]>(`${this.url}${this.card_controller}/user/${id}`);
+  }
+
   postTimeCard(timacard: Timecard): Observable<any> {
     return this.http.post<any>(`${this.url}${this.card_controller}`, timacard);
   }

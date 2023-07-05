@@ -1,5 +1,5 @@
 .main {
-  margin: 2rem 0 0.5rem;
+  margin: 0.8rem  0.5rem;
   padding: 2rem;
 }
 
@@ -24,9 +24,11 @@ mat-card-actions {
   display: inline-flex;
   align-items: center;
   justify-content: space-around;
-  & button{
+
+  & button {
     margin: 0 0.5rem;
   }
+
   & .select {
     box-shadow: 0 0 0.5rem var(--deep-black-color);
     border: 1px solid var(--bright-white);
@@ -71,8 +73,7 @@ mat-card-actions {
 
 
 @media (max-width: 750px) {
-  .main{
+  .main {
     padding: 1rem;
   }
 }
-

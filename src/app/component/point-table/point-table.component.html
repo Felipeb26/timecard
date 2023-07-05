@@ -3,7 +3,7 @@
     <ng-container matColumnDef="data">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Data</th>
       <td mat-cell *matCellDef="let card">
-        {{ card.data | date : "dd/MM/yyyy HH:mm:ss" }}
+        {{ card.dataCadastro | date : "dd/MM/yyyy HH:mm:ss" }}
       </td>
       <td mat-footer-cell *matFooterCellDef>Total</td>
     </ng-container>
@@ -11,7 +11,7 @@
     <ng-container matColumnDef="entrada">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>entrada</th>
       <td mat-cell *matCellDef="let card">
-        {{ card.entrada | date : "dd/MM/yyyy HH:mm:ss" }}
+        {{ card.dataEntrada | date : "dd/MM/yyyy HH:mm:ss" }}
       </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
@@ -19,7 +19,7 @@
     <ng-container matColumnDef="saida">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>saida</th>
       <td mat-cell *matCellDef="let card">
-        {{ card.saida | date : "dd/MM/yyyy HH:mm:ss" }}
+        {{ card.dataSaida | date : "dd/MM/yyyy HH:mm:ss" }}
       </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
@@ -28,13 +28,14 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         Horas trabalhadas
       </th>
-      <td mat-cell *matCellDef="let card">{{ card.horas_trabalhadas }}</td>
+      <td mat-cell *matCellDef="let card">{{ card.horasTrabalhadas >= 0 ? card.horasTrabalhadas / 3600 :
+        +(+card.horasTrabalhadas / 3600)}}</td>
       <td mat-footer-cell *matFooterCellDef>{{getTotalHoras()}}</td>
     </ng-container>
 
     <ng-container matColumnDef="saldo">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>saldo</th>
-      <td mat-cell *matCellDef="let card">{{ card.saldo }}</td>
+      <td mat-cell *matCellDef="let card">{{ card.saldo >= 0 ? card.saldo / 3600 : +(+card.saldo / 3600)}}</td>
       <td mat-footer-cell *matFooterCellDef>{{getTotalSaldo()}}</td>
     </ng-container>
 
@@ -51,10 +52,6 @@
     <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
     <tr mat-footer-row *matFooterRowDef="columnsToDisplay; sticky: true"></tr>
   </table>
-  <mat-paginator
-    [length]="timecard.length"
-    [pageSize]="5"
-    [pageSizeOptions]="[1, 5, 10, 15, 30]"
-    showFirstLastButtons
-  ></mat-paginator>
+  <mat-paginator [length]="timecard.length" [pageSize]="5" [pageSizeOptions]="[1, 5, 10, 15, 30]"
+    showFirstLastButtons></mat-paginator>
 </mat-card>

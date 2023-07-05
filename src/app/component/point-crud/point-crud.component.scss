@@ -77,12 +77,19 @@ datetime-control {
 
 @media (max-width: 650px) {
   mat-card {
-    width: 35rem;
+    width: 36rem;
   }
 }
 
-@media (max-width: 580px) {
+@media (max-width: 590px) {
   mat-card {
+    width: 33rem;
+  }
+}
+
+@media (max-width: 550px){
+  mat-card{
+    margin: auto;
     width: 28rem;
   }
 }

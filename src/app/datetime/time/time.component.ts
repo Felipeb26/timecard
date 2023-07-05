@@ -8,8 +8,11 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class TimeComponent implements AfterViewInit {
 
-  hours: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
-  minutes: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
+  hourScroll: number = 0;
+
+  hora: number = 0;
+  minuto: number = 0;
+  minute_value: number = 0;
 
   constructor (private ref: MatDialogRef<TimeComponent>) { }
 
@@ -67,6 +70,46 @@ export class TimeComponent implements AfterViewInit {
       }
     }
     this.ref.close(time)
+  }
+
+  upValue(which: number) {
+    if (which === 0) {
+      const horas = document.getElementById("hours");
+      const li = horas!.getElementsByTagName("li")[0];
+      const value = li!.textContent;
+      if (value == null) return;
+      let newValue = Number(value) + 1;
+      if (newValue >= 25) newValue = 0;
+      li!.textContent = `${newValue}`
+    } else {
+      const horas = document.getElementById("minutes");
+      const li = horas!.getElementsByTagName("li")[0];
+      const value = li!.textContent;
+      if (value == null) return;
+      let newValue = Number(value) + 1;
+      if (newValue >= 60) newValue = 0;
+      li!.textContent = `${newValue}`
+    }
+  }
+
+  downValue(which: number) {
+    if (which === 0) {
+      const horas = document.getElementById("hours");
+      const li = horas!.getElementsByTagName("li")[0];
+      const value = li!.textContent;
+      if (value == null) return;
+      let newValue = Number(value) - 1;
+      if (newValue <= -1) newValue = 0;
+      li!.textContent = `${newValue}`
+    } else {
+      const horas = document.getElementById("minutes");
+      const li = horas!.getElementsByTagName("li")[0];
+      const value = li!.textContent;
+      if (value == null) return;
+      this.minute_value = Number(value) - 1;
+      if (this.minute_value <= -1) this.minute_value = 0;
+      li!.textContent = `${this.minute_value}`
+    }
   }
 
 }

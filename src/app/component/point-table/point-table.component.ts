@@ -61,12 +61,12 @@ export class PointTableComponent implements OnChanges {
   }
 
   getTotalSaldo() {
-    // return this.timecard.map(ap => {
-    //   if (ap.saldo != undefined && ap.saldo != null) ap.saldo;
-    // }).reduce((index, value) => index + value, 0)
+    return this.timecard.map(ap => ap!.saldo).reduce((index, value) => this.ifUndefined(index) + this.ifUndefined(value), 0)
   }
 
   getTotalHoras() {
+    return this.timecard.map(ap => ap!.horasTrabalhadas).reduce((index, value) => this.ifUndefined(index) + this.ifUndefined(value), 0)
+
     // let hora_total = 0;
     // let minuto_total = 0;
     // this.timecard.map(ap => {
@@ -80,4 +80,11 @@ export class PointTableComponent implements OnChanges {
     // });
     // return `${hora_total} horas ${minuto_total} min`
   }
+
+  ifUndefined(value: any): number {
+    if (value == undefined) return 0;
+    return value;
+  }
+
+  // secondsToHours(value:num)
 }

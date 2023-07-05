@@ -1,9 +1,11 @@
 import { formatDate } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
 import { Timecard } from 'src/app/interfaces/timecard';
 import { BatsworksApiService } from 'src/app/services/batsworks-api.service';
+import { LoginService } from 'src/app/services/login.service';
 import { SharePointService } from 'src/app/services/shared/share-point.service';
 import { UtilsService } from 'src/app/services/utils.service';
 
@@ -36,6 +38,8 @@ export class PointCrudComponent implements AfterViewInit, OnInit {
     private shared: SharePointService,
     private cdref: ChangeDetectorRef,
     private toastr: ToastrService,
+    private cookie: CookieService,
+    private token: LoginService,
     private utils: UtilsService) { }
 
   ngOnInit(): void {
@@ -53,6 +57,14 @@ export class PointCrudComponent implements AfterViewInit, OnInit {
     this.cdref.detectChanges();
     this.shared.value.subscribe((timecard: Timecard) => {
       this.cardpoint = timecard;
+      this.placeholder_1 = timecard.dataCadastro;
+      this.placeholder_2 = timecard.dataEntrada;
+      this.placeholder_3 = timecard.dataSaida;
+
+      this.pointgroup = new FormGroup({
+        horasAlmoco: new FormControl(Number(timecard.tempoAlmoco.split(" ")[0])),
+        jornadaTrabalho: new FormControl(timecard.jornadaTrabalho)
+      });
     });
   }
 
@@ -62,6 +74,10 @@ export class PointCrudComponent implements AfterViewInit, OnInit {
       horasAlmoco: new FormControl(""),
       jornadaTrabalho: new FormControl("")
     });
+    this.placeholder_1 = "Data cadastrada";
+    this.placeholder_2 = "Data entrada";
+    this.placeholder_3 = "Data saida";
+    this.error = false;
   }
 
   getDataCadastro($event: string): void {
@@ -82,8 +98,8 @@ export class PointCrudComponent implements AfterViewInit, OnInit {
     this.dataSaida = `${ano}-${mes}-${dia} ${horario}`;
   }
 
-
   markPointcard(form: FormGroupDirective) {
+    const { sub } = this.token.decodeToken(this.cookie.get("auth"));
     if (form.invalid) {
       this.error = true; return;
     }
@@ -96,8 +112,15 @@ export class PointCrudComponent implements AfterViewInit, OnInit {
       dataSaida: this.dataSaida,
       jornadaTrabalho: jornadaTrabalho,
       tempoAlmoco: horasAlmoco > 10 ? horasAlmoco + " mins" : horasAlmoco + " hrs",
+      personaDTO: {
+        username: "",
+        nome: "",
+        email: sub,
+        idade: "",
+        senha: "",
+        dataNascimento: ""
+      }
     }
-    console.log(cardpoint)
     this.requests.postTimeCard(cardpoint).subscribe(
       (data) => {
         console.log(data)
@@ -105,10 +128,10 @@ export class PointCrudComponent implements AfterViewInit, OnInit {
         window.location.reload();
       },
       (error) => {
-        this.toastr.error(`Houve um erro ${error.message}`);
+        this.toastr.error(`${error.message}`);
         console.log(error)
       });
-    // this.shared.needsUpdate(true);
+    this.shared.needsUpdate(true);
   }
 
   setHorasTrabalhadas(data_1: string, data_2: string): string {

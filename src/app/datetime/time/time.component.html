@@ -2,21 +2,34 @@
 
   <div class="time">
     <div class="hours">
-      <span>horas</span>
+      <i class="material-icons" (click)="upValue(0)">
+        expand_less
+      </i>
       <ul id="hours">
-        <li *ngFor="let hour of hours">
-          {{hour}}
+        <li>
+          {{hora}}
         </li>
       </ul>
+      <i class="material-icons" (click)="downValue(0)">
+        keyboard_arrow_down
+      </i>
     </div>
-
+    <div class="divide">
+      <span>-</span>
+      <span>-</span>
+    </div>
     <div class="minutes">
-      <span>min</span>
+      <i class="material-icons" (click)="upValue(1)">
+        expand_less
+      </i>
       <ul id="minutes">
-        <li *ngFor="let minute of minutes">
-          {{minute}}
+        <li [contentEditable]="true">
+          {{minuto}}
         </li>
       </ul>
+      <i class="material-icons" (click)="downValue(1)">
+        keyboard_arrow_down
+      </i>
     </div>
     <button type="button" mat-raised-button (click)="getTime()">
       ok
