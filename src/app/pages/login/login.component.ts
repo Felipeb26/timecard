@@ -8,6 +8,16 @@ import { Token } from 'src/app/interfaces/token';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { ToastrService } from 'ngx-toastr';
+import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
+
+const oauthConfig: AuthConfig = {
+  issuer: "https://batsworks-timecard.onrender.com/batsworks/oauth2/authorization/github",
+  strictDiscoveryDocumentValidation: false,
+  redirectUri: window.location.origin,
+  clientId: "42079873f52c942cfc2f",
+  scope: "openid profile email"
+}
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,11 +30,14 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup
 
   constructor (
+    private readonly oauthService: OAuthService,
     private toastr: ToastrService,
     private service: LoginService,
     private auth: BatsworksApiService,
     private cookie: CookieService,
-    private router: Router) { }
+    private router: Router) {
+
+  }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -54,6 +67,20 @@ export class LoginComponent implements OnInit {
   }
 
   githubLogin() {
+    // this.oauthService.configure(oauthConfig);
+    // this.oauthService.loadDiscoveryDocument().then(() => {
+    //   this.oauthService.tryLoginImplicitFlow().then(() => {
+    //     if (!this.oauthService.hasValidAccessToken()) {
+    //       this.oauthService.initLoginFlow()
+    //     } else {
+    //       this.oauthService.loadUserProfile().then((user) => {
+    //         console.log(JSON.stringify(user))
+    //       })
+    //     }
+    //   })
+    // }).catch((err) =>{
+    //   console.log(err)
+    // })
     // window.location.href ="https://batsworks-timecard.onrender.com/batsworks/oauth2/authorization/github";
     // this.auth.loginGithub().subscribe(data => {
     //   console.log("github")

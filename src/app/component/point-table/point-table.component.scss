@@ -4,6 +4,7 @@ mat-card {
   overflow-x: scroll;
   padding: 0 0 1rem 0;
   height: 24.9;
+  transition: all 0.8 ease-in;
 
   & th {
     text-transform: capitalize;
@@ -27,13 +28,34 @@ mat-card {
   color: var(--mid-red);
 }
 
+.export{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  box-shadow: 0 0 0.5rem var(--deep-black-color);
+  border: 2px solid var(--mid-white);
+  border-radius: 0.5rem;
+  color: var(--deep-black-color);
+  background: var(--wave-color);
+  padding: 0.5rem;
+  & i{
+    text-transform: lowercase;
+  }
+}
+
+button:hover {
+  box-shadow: 0 0 1rem var(--wave-color);
+  border: 2px solid var(--deep-black-color);
+  color: var(--text-color);
+}
 
 @media (min-width:950px) {
   td {
     white-space: nowrap;
   }
 }
-
 
 @media (max-width: 650px) {
   mat-card {
@@ -45,8 +67,14 @@ mat-card {
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 585px) {
+  mat-card{
+    width: 33rem;
+  }
+}
+
+@media (max-width: 550px) {
   mat-card {
-    width: 23rem;
+    width: 28rem;
   }
 }

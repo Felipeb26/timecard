@@ -1,5 +1,5 @@
 <mat-card>
-  <table mat-table flex [dataSource]="dataSource" class="mat-elevation-z3" matSort>
+  <table mat-table flex [dataSource]="dataSource" class="mat-elevation-z3" matSort  matTableExporter #exporter="matTableExporter">
     <ng-container matColumnDef="data">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Data</th>
       <td mat-cell *matCellDef="let card">
@@ -45,7 +45,14 @@
         <i class="material-icons update" (click)="updatePoint(card)">update</i>
         <i class="material-icons delete" (click)="deletePoint(card)">delete</i>
       </td>
-      <td mat-footer-cell *matFooterCellDef></td>
+      <td mat-footer-cell *matFooterCellDef>
+        <button type="button" (click)="exportFile()" class="export" mat-button>
+            gerar csv
+            <i class="material-icons">
+              file_download
+            </i>
+        </button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>

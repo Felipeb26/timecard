@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DateCalendarComponent } from '../date-calendar/date-calendar.component';
 import { TimeComponent } from '../time/time.component';
@@ -16,9 +16,12 @@ export default class DatetimeControlComponent implements OnInit {
   time: string = "";
   worker = new Worker(new URL('../../app.worker', import.meta.url));
 
-  constructor (private dialog: MatDialog) { }
+  constructor (
+    private dialog: MatDialog,
+    private cdrf: ChangeDetectorRef) { }
 
   ngOnInit(): void {
+    this.cdrf.detectChanges();
   }
 
   calendarDialog() {
@@ -90,5 +93,12 @@ export default class DatetimeControlComponent implements OnInit {
     this.data.emit(this.value);
   }
 
+  detectRegexDate(value: string): string {
+    const regex = /^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})$/;
+    if (regex.test(value)) {
+      return value.replace(regex, "$3/$2/$1 $4:$5")
+    }
+    return value;
+  }
 
 }

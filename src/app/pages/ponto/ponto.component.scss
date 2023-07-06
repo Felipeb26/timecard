@@ -26,6 +26,7 @@ mat-card-actions {
   justify-content: space-around;
 
   & button {
+    border-radius: 0.8rem;
     margin: 0 0.5rem;
   }
 
@@ -46,7 +47,16 @@ mat-card-actions {
     text-transform: uppercase;
     transition: all 0.5s ease-in-out;
   }
+
+  & button:hover {
+    background: var(--wave-color);
+    box-shadow: 0 0 1rem var(--wave-color);
+    border: 2px solid var(--deep-black-color);
+    color: var(--text-color);
+  }
 }
+
+
 
 .components {
   display: flex;

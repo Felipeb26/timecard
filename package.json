@@ -38,6 +38,8 @@
     "@sweetalert2/ngx-sweetalert2": "^12.1.0",
     "@sweetalert2/themes": "^5.0.15",
     "@syncfusion/ej2-material-theme": "~22.1.36",
+    "angular-oauth2-oidc": "^15.0.1",
+    "mat-table-exporter": "^15.0.0",
     "ngx-cookie-service": "^16.0.0",
     "ngx-toastr": "^17.0.2",
     "rxjs": "~7.8.0",

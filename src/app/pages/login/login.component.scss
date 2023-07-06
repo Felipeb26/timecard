@@ -50,6 +50,14 @@ mat-action {
       background: var(--mid-green);
       color: var(--bright-white);
       text-transform: uppercase;
+      transition: all 0.5s ease-in-out;
+    }
+
+    & button:hover {
+      background: var(--wave-color);
+      box-shadow: 0 0 1rem var(--wave-color);
+      border: 2px solid var(--deep-black-color);
+      color: var(--text-color);
     }
   }
 
@@ -92,7 +100,7 @@ mat-action {
     transition: all 0.8s ease-in-out;
   }
 
-  & span:hover{
+  & span:hover {
     color: var(--bright-white);
     background: var(--deep-black-color);
   }
@@ -101,7 +109,6 @@ mat-action {
 mat-error {
   text-transform: capitalize;
 }
-
 
 @media (max-width: 450px) {
   mat-card {

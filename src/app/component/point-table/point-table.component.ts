@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, Input, OnChanges, ViewChild } from '@angu
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ExportType, MatTableExporterDirective } from 'mat-table-exporter';
 import { ToastrService } from 'ngx-toastr';
 import { Timecard } from 'src/app/interfaces/timecard';
 import { BatsworksApiService } from 'src/app/services/batsworks-api.service';
@@ -14,6 +15,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./point-table.component.scss']
 })
 export class PointTableComponent implements OnChanges {
+
+  @ViewChild(MatTableExporterDirective, { static: true })
+  exporter!: MatTableExporterDirective;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -86,5 +90,15 @@ export class PointTableComponent implements OnChanges {
     return value;
   }
 
-  // secondsToHours(value:num)
+  exportFile() {
+    this.exporter.exportTable(ExportType.CSV, {
+      fileName: "batsworks-cardpoints",
+      delimiter: ",",
+      compression: true,
+      Props: {
+        Author: "Felipes b.Silva - BatsWorks"
+      }
+    });
+  }
+
 }

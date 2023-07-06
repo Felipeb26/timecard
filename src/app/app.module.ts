@@ -20,6 +20,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatTableExporterModule } from "mat-table-exporter";
 //
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -44,6 +45,7 @@ import { CreateForgetComponent } from './pages/create-forget/create-forget.compo
 import DatetimeControlComponent from './datetime/datetime-control/datetime-control.component';
 import { TimeComponent } from './datetime/time/time.component';
 import { DateCalendarComponent } from './datetime/date-calendar/date-calendar.component';
+import { OAuthModule } from "angular-oauth2-oidc";
 
 registerLocaleData(localePt);
 @NgModule({
@@ -93,6 +95,8 @@ registerLocaleData(localePt);
     FontAwesomeModule,
     MatExpansionModule,
     MatDialogModule,
+    MatTableExporterModule,
+    OAuthModule.forRoot(),
     // JwtModule.forRoot(),
   ],
   providers: [
