@@ -140,6 +140,34 @@ mat-toolbar {
   }
 }
 
+section {
+  top: calc(100% / 10);
+  width: 100%;
+  height: 7rem;
+  background: var(--wave-color);
+}
+
+.wave {
+  position: relative;
+  top: 7rem;
+  left: 0;
+  height: 100px;
+  width: 100%;
+  background: var(--wave-color) url("../../../assets/wave.png");
+  background-size: 2000px 100px;
+  animation: wave_balance 15s linear infinite;
+}
+
+@keyframes wave_balance {
+  0% {
+    background-position-x: 100rem;
+  }
+
+  100% {
+    background-position-x: 0;
+  }
+}
+
 @media (min-width: 750px) {
 
   .menu,
@@ -181,36 +209,5 @@ mat-toolbar {
 
   .menu{
     flex: 1;
-  }
-}
-
-section {
-  margin: auto;
-  position: absolute;
-  width: 100%;
-  height: 8rem;
-  background: var(--wave-color);
-  overflow: hidden;
-  z-index: -2;
-}
-
-.wave{
-  position: absolute;
-  top: 4rem;
-  width: 100%;
-  height: 8rem;
-  background: var(--wave-color) url("../../../assets/wave.png");
-  background-size: 100rem 5rem;
-  animation: wave_balance 20s linear infinite;
-  z-index: 4;
-}
-
-@keyframes wave_balance{
-  0%{
-    background-position-x: 100rem ;
-  }
-
-  100%{
-    background-position-x: 0;
   }
 }

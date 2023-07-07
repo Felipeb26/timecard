@@ -25,7 +25,7 @@ export class PontoComponent {
     private token: LoginService,) { }
 
   ngOnInit(): void {
-    this.makeRequest(true);
+    this.makeRequest(false);
     this.cdref.detectChanges();
   }
 

@@ -6,7 +6,7 @@
         expand_less
       </i>
       <ul id="hours">
-        <li>
+        <li [contentEditable]="true" class="active">
           {{hora}}
         </li>
       </ul>
@@ -23,7 +23,7 @@
         expand_less
       </i>
       <ul id="minutes">
-        <li [contentEditable]="true">
+        <li [contentEditable]="true" class="active">
           {{minuto}}
         </li>
       </ul>

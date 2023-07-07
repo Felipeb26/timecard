@@ -1,3 +1,4 @@
+import { MatDialog } from '@angular/material/dialog';
 import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
+import { ResetPassComponent } from 'src/app/component/reset-pass/reset-pass.component';
 
 const oauthConfig: AuthConfig = {
   issuer: "https://batsworks-timecard.onrender.com/batsworks/oauth2/authorization/github",
@@ -31,6 +33,8 @@ export class LoginComponent implements OnInit {
 
   constructor (
     private readonly oauthService: OAuthService,
+    private token: LoginService,
+    private dialog: MatDialog,
     private toastr: ToastrService,
     private service: LoginService,
     private auth: BatsworksApiService,
@@ -56,6 +60,7 @@ export class LoginComponent implements OnInit {
         this.cookie.set("auth", data.token, { expires: this.auth.authTime() });
         this.router.navigate([""]);
         this.service.isUserLogged(true)
+        this.backgroundrequestToUserData(data.token)
         this.toastr.success("usuario autenticado")
       },
       (error: any) => {
@@ -65,6 +70,24 @@ export class LoginComponent implements OnInit {
       }
     )
   }
+
+  resetPass() {
+    this.dialog.open(ResetPassComponent)
+  }
+
+  backgroundrequestToUserData(token: string) {
+    const { sub } = this.token.decodeToken(token);
+
+    if (typeof Worker !== 'undefined') {
+      const worker = new Worker(new URL('../../app.worker', import.meta.url));
+      worker.onmessage = ({ data }) => {
+        console.log(`page got message: ${data}`);
+      };
+      worker.postMessage(token + "LIPE" + sub);
+    } else {
+    }
+  }
+
 
   githubLogin() {
     // this.oauthService.configure(oauthConfig);

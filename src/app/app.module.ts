@@ -46,6 +46,7 @@ import DatetimeControlComponent from './datetime/datetime-control/datetime-contr
 import { TimeComponent } from './datetime/time/time.component';
 import { DateCalendarComponent } from './datetime/date-calendar/date-calendar.component';
 import { OAuthModule } from "angular-oauth2-oidc";
+import { ResetPassComponent } from './component/reset-pass/reset-pass.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -64,6 +65,7 @@ registerLocaleData(localePt);
     DatetimeControlComponent,
     TimeComponent,
     DateCalendarComponent,
+    ResetPassComponent,
   ],
   imports: [
     BrowserModule,

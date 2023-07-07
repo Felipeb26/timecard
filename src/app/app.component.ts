@@ -1,6 +1,8 @@
 import { Message } from './interfaces/message';
 import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { LoadingService } from './services/loading.service';
+import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,9 @@ export class AppComponent implements AfterViewChecked, OnInit {
   title = 'timecard';
   request: boolean = false;
 
-  constructor (public load: LoadingService, private cdref: ChangeDetectorRef) { }
+  constructor (
+    public load: LoadingService,
+    private cdref: ChangeDetectorRef) { }
 
   ngAfterViewChecked(): void {
     this.load.loading$.subscribe(request => this.request = request);
@@ -19,17 +23,7 @@ export class AppComponent implements AfterViewChecked, OnInit {
   }
 
   ngOnInit(): void {
-    if (typeof Worker !== 'undefined') {
-      // Create a new
-      const worker = new Worker(new URL('./app.worker', import.meta.url));
-      worker.onmessage = ({ data }) => {
-        console.log(`page got message: ${data}`);
-      };
-      worker.postMessage('hello');
-    } else {
-      // Web workers are not supported in this environment.
-      // You should add a fallback so that your program still executes correctly.
-    }
+
   }
 
 }

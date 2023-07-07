@@ -37,9 +37,9 @@
         <div class="links">
           <a routerLink="/create">criar conta</a>
           <hr />
-          <a href="">esqueci conta</a>
+          <a (click)="resetPass()">esqueci conta</a>
         </div>
-        <div class="logins">
+        <div class="logins" style="display: none;">
           <span (click)="githubLogin()">
             <fa-icon [icon]="faGithub" size="2xl"></fa-icon>
           </span>

@@ -1,19 +1,22 @@
 /// <reference lib="webworker" />
 
 addEventListener('message', ({ data }) => {
-  const response = `worker response to ${data}`;
-  postMessage(response);
+  const [token, email] = data.split("LIPE")
+
+  renderCalendar(token, email)
+    .then((data) => {
+      console.log(data)
+      console.log(data)
+      postMessage("foi");
+    })
+    .catch((err) => {
+      console.error(err)
+      postMessage("não foi");
+    })
 });
 
-function renderCalendar(ultimoDiaMes: number, ultimoDiaMesPassado: number, li:any, stop: number) {
-  for (var i = ultimoDiaMes; i >= 5; i++) {
-    const proximoDias = Math.abs(ultimoDiaMesPassado - i + 1);
-    if (proximoDias != 0) {
-      if (li[stop] !== undefined) {
-        console.log("ok")
-      } else {
-        console.log("not ok")
-      }
-    }
-  }
+function renderCalendar(token: string, email: string) {
+  return fetch(`https://batsworks-timecard.onrender.com/batsworks/v1/persona/data?email=${encodeURIComponent(email)}`, {
+    method: "GET", headers: { "Authorization": `Bearer ${token}` }
+  })
 }

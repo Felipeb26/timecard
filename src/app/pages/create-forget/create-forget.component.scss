@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 3rem 0 3rem 0;
+  margin: -3rem 0 3rem 0;
 }
 
 
@@ -13,6 +13,7 @@ form {
 }
 
 mat-card {
+  box-shadow: 0 0 0.5rem var(--deep-black-color);
   padding: 2rem;
 
   & mat-label {

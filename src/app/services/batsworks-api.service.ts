@@ -1,11 +1,10 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { Login } from "../interfaces/login";
-import { Token } from '../interfaces/token';
-import { Pagination } from '../interfaces/pagination';
 import { Persona } from '../interfaces/persona';
 import { Timecard } from '../interfaces/timecard';
+import { Token } from '../interfaces/token';
 
 @Injectable({
   providedIn: 'root'
@@ -59,7 +58,7 @@ export class BatsworksApiService {
     return this.http.get<Timecard[]>(`${this.url}${this.card_controller}`)
   }
 
-  findCardByUserId(id:string):Observable<Timecard[]>{
+  findCardByUserId(id: string): Observable<Timecard[]> {
     return this.http.get<Timecard[]>(`${this.url}${this.card_controller}user/${id}`);
   }
 

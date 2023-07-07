@@ -56,15 +56,17 @@ export class PointCrudComponent implements AfterViewInit, OnInit {
   ngAfterViewInit(): void {
     this.cdref.detectChanges();
     this.shared.value.subscribe((timecard: Timecard) => {
-      this.cardpoint = timecard;
-      this.placeholder_1 = timecard.dataCadastro;
-      this.placeholder_2 = timecard.dataEntrada;
-      this.placeholder_3 = timecard.dataSaida;
+      try {
+        this.cardpoint = timecard;
+        this.placeholder_1 = timecard.dataCadastro;
+        this.placeholder_2 = timecard.dataEntrada;
+        this.placeholder_3 = timecard.dataSaida;
 
-      this.pointgroup = new FormGroup({
-        horasAlmoco: new FormControl(Number(timecard.tempoAlmoco.split(" ")[0])),
-        jornadaTrabalho: new FormControl(timecard.jornadaTrabalho)
-      });
+        this.pointgroup = new FormGroup({
+          horasAlmoco: new FormControl(Number(timecard.tempoAlmoco.split(" ")[0])),
+          jornadaTrabalho: new FormControl(timecard.jornadaTrabalho)
+        });
+      } catch (error) { }
     });
   }
 
@@ -81,19 +83,29 @@ export class PointCrudComponent implements AfterViewInit, OnInit {
   }
 
   getDataCadastro($event: string): void {
-    const [data, horario] = $event.split(" ");
+    console.log(this.dataCadastro)
+    let [data, horario] = $event.split(" ");
+    if (horario != undefined && horario.trim() === "") {
+      [data, horario] = $event.split("  ");
+    }
     const [dia, mes, ano] = data.split("/")
     this.dataCadastro = `${ano}-${mes}-${dia} ${horario}`;
   }
 
   getDataEntrada($event: string): void {
-    const [data, horario] = $event.split(" ");
+    let [data, horario] = $event.split(" ");
+    if (horario != undefined && horario.trim() === "") {
+      [data, horario] = $event.split("  ");
+    }
     const [dia, mes, ano] = data.split("/")
     this.dataEntrada = `${ano}-${mes}-${dia} ${horario}`;
   }
 
   getDataSaida($event: string): void {
-    const [data, horario] = $event.split(" ");
+    let [data, horario] = $event.split(" ");
+    if (horario != undefined && horario.trim() === "") {
+      [data, horario] = $event.split("  ");
+    }
     const [dia, mes, ano] = data.split("/")
     this.dataSaida = `${ano}-${mes}-${dia} ${horario}`;
   }
@@ -104,14 +116,12 @@ export class PointCrudComponent implements AfterViewInit, OnInit {
       this.error = true; return;
     }
     const { horasAlmoco, jornadaTrabalho } = form.value;
-
-    console.log(form.value)
     const cardpoint: Timecard = {
       dataCadastro: this.dataCadastro,
       dataEntrada: this.dataEntrada,
       dataSaida: this.dataSaida,
       jornadaTrabalho: jornadaTrabalho,
-      tempoAlmoco: horasAlmoco > 10 ? horasAlmoco + " mins" : horasAlmoco + " hrs",
+      tempoAlmoco: horasAlmoco > 10 ? `${horasAlmoco} mins` : `${horasAlmoco} hrs`,
       personaDTO: {
         username: "",
         nome: "",
